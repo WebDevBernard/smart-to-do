@@ -77,7 +77,7 @@ body {
     justify-content: center;
 
     img {
-      height: 75px;
+      height: 60px;
       // right: 0;
       // left: 0;
       margin-top: 30%;
@@ -105,6 +105,20 @@ body {
     margin-right: 5%;
     background: linear-gradient(90deg, #3d75c9 0%, #69a4fe 73.7%);
     border-radius: 50px;
+
+    textarea {
+      resize: none;
+      // margin-top: 1em;
+      width: 55%;
+      height: 28px;
+      border: 0px;
+      font-family: $font-stack;
+      font-size: 0.8em;
+      font-weight: 400px;
+      background-color: inherit;
+      color: #ffffff;
+      opacity: 100%;
+    }
   }
 
   .add-task:hover {
@@ -123,21 +137,11 @@ body {
     color: #ffffff;
     font-weight: 500;
     font-size: 1.1em;
-    width: 180px;
-  }
-
-  /* The popup form - hidden by default */
-  .popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
+    width: 195px;
   }
 
   i {
-    padding-right: 7%;
+    padding-right: 10%;
   }
 
   .cards {
@@ -151,7 +155,7 @@ body {
     align-items: space-between;
   }
 
-  .to-watch {
+  .category-card {
     width: 430px;
     margin-bottom: 2%;
     height: 300px;
@@ -159,60 +163,11 @@ body {
     border-radius: 25px;
   }
 
-  .to-watch:hover {
+  .category-card:hover {
     box-shadow: 8px 8px 8px #c4dcff;
     transition:all .3s linear;    
     -webkit-transition:all .3s linear;
     -o-transition:all .3s linear;
     -moz-transition:all .3s linear;
   }
-
-  .to-eat {
-    width: 430px;
-    height: 300px;
-    margin-bottom: 2%;
-    background: #ffffff;
-    border-radius: 25px;
-  }
-
-  .to-eat:hover {
-    box-shadow: 8px 8px 8px #c4dcff;
-    transition:all .3s linear;    
-    -webkit-transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-  }
-
-  .to-read {
-    width: 430px;
-    height: 300px;
-    margin-bottom: 2%;
-    background: #ffffff;
-    border-radius: 25px;
-  }
-
-  .to-read:hover {
-    box-shadow: 8px 8px 8px #c4dcff;
-    transition:all .3s linear;    
-    -webkit-transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-  }
-
-  .to-buy {
-    width: 430px;
-    height: 300px;
-    margin-bottom: 2%;
-    background: #ffffff;
-    border-radius: 25px;
-  }
-
-  .to-buy:hover {
-    box-shadow: 8px 8px 8px #c4dcff;
-    transition:all .3s linear;    
-    -webkit-transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-  }
-
 }

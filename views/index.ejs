@@ -30,8 +30,8 @@
     <main class="container">
       <!-- the button to add a task -->
       <div class="add-task">
-        <form action="/tasks" method="POST" id="tasksform">
-          <button type="submit" name="task" class="task-button"><i class="far fa-edit"></i> add a task</button>
+        <form action="/:id" method="POST" id="tasksform">
+          <button type="submit" name="task" class="task-button"><i class='far fa-edit fa-lg'></i> <textarea name="text" placeholder="add a task"></textarea></button>
         </form>
       </div>
       
@@ -39,19 +39,13 @@
       <!-- the div for the 4 category cards -->
       <div class="cards">
 
-        <!-- this is the to watch card -->
-        <div class="to-watch">
-          <h5>things to watch</h5>
-          <ul>
-            <li>pride and prejudice</li>
-            <li>the breakfast club</li>
-          </ul>
-          <!-- this will eventually be a section like this:
-          <section class="to-watch-list"></section> -->
-        </div>
+        <!-- this is the to watch card -->     
+        <section class="category-card">
+
+        </section>
         <!-- this is the to eat card -->
-        <div class="to-eat">
-          <h5>places to eat</h5>
+        <div class="category-card">
+          <h5>places to eat at</h5>
           <ul>
             <li>yolks</li>
             <li>osterio savio volpe</li>
@@ -61,7 +55,7 @@
         </div>
 
         <!-- this is the to read card -->
-        <div class="to-read">
+        <div class="category-card">
           <h5>books to read</h5>
           <ul>
             <li>the name of the wind</li>
@@ -72,7 +66,7 @@
         </div>
 
         <!-- this is the to buy card -->
-        <div class="to-buy">
+        <div class="category-card">
           <h5>things to buy</h5>
           <ul>
             <li>shampoo</li>

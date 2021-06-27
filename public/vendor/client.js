@@ -1,42 +1,51 @@
 $(document).ready(function() {
-  // With options:
-  $('#to-watch').sortable({
-  // SortableJS options go here
-  // See: (https://github.com/SortableJS/Sortable#options)
+  // creating the list article element
+  const createTaskElement = function({task: {id, name, category_name, date_created}}) {
+    const $task = $(`<article class="tweet-container"></article>`);
+    const $categoryCard = $(`<div class="category-card></div>`).appendTo($task);
+    const $categoryName = $(`<h5>${category_name}</h5>`).appendTo($categoryCard);
+    const $text = $(`<ul><li>${name}</li><ul>`).text(content.text).appendTo($categoryCard);
 
-    handle: '.handle',
-    invertSwap: true,
-    // . . .
-  })
+    return $task;
+  };
 
-  // With options:
-  $('#to-eat').sortable({
-    // SortableJS options go here
-    // See: (https://github.com/SortableJS/Sortable#options)
+  // renders the timeline in reverse-chronological order
+  const renderTasks = function(tasks) {
+    $('.tasks-timeline').empty();
+      tasks.forEach(function(tweet) {
+        createTaskElement(task).appendTo('.tasks-timeline');
+      });
+  }
 
-      handle: '.handle',
-      invertSwap: true,
-      // . . .
-    })
+  // using ajax to load the tasks
+  const loadTasks = function() {
+    $.ajax({
+      method: 'GET',
+      url: '/',
+      data: $('#tasksform').serialize(),
+      dataType: 'json',
+      success: function (data) {
+        renderTasks(data);
+      }
+    });
+  };
+  loadTasks;
 
-    // With options:
-  $('#to-read').sortable({
-    // SortableJS options go here
-    // See: (https://github.com/SortableJS/Sortable#options)
+  // using ajax to submit the tasks
+  const postTweet = function(data) {
+    $.ajax({
+      method: 'POST',
+      data: data,
+      url: '/:id',
 
-      handle: '.handle',
-      invertSwap: true,
-      // . . .
-    })
+      success: function (result) {
+        loadTasks();
+        $('.add-task textarea').val('');
+      },
+      error: function (err) {
+        console.log('error');
+      }
+    });
+  };
 
-    // With options:
-  $('#to-buy').sortable({
-    // SortableJS options go here
-    // See: (https://github.com/SortableJS/Sortable#options)
-
-      handle: '.handle',
-      invertSwap: true,
-      // . . .
-    })
-    
 });
