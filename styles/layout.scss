@@ -40,6 +40,7 @@ body {
   ul li {
     position: relative;
     padding-left: 24px;
+    padding-bottom: 10px;
   }
 
   ul li:before {
@@ -63,16 +64,25 @@ body {
     color: #69A4FE!important;
   }
 
-  img {
-    //position: relative;
-    display: block;
+  aside {
+    position: fixed;
     float: right;
-    height: 60px;
-    margin: auto;
-    margin-top: 2%;
-    margin-right: 1.2%;
-  }
+    right:0;
+    top: 0;
+    bottom: 0;
+    // padding:124px 48px 124px 107px;
+    width: 5%;
+    background-color:#69A4FE;
+    display: flex;
+    justify-content: center;
 
+    img {
+      height: 75px;
+      // right: 0;
+      // left: 0;
+      margin-top: 30%;
+    }
+  }
 }
 
 // main body stuff
@@ -116,53 +126,93 @@ body {
     width: 180px;
   }
 
+  /* The popup form - hidden by default */
+  .popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+
   i {
     padding-right: 7%;
   }
 
   .cards {
-    width: 80%;
+    width: 65%;
     display: flex;
     padding-top: 10%;
-    padding-left: 10%;
-    flex-direction: column;
-    justify-content: space-between;
+    padding-left: 20%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: space-between;
   }
 
   .to-watch {
     width: 430px;
     margin-bottom: 2%;
-    height: 125px;
+    height: 300px;
     background: #ffffff;
-    box-shadow: 8px 8px 8px #c4dcff;
     border-radius: 25px;
+  }
+
+  .to-watch:hover {
+    box-shadow: 8px 8px 8px #c4dcff;
+    transition:all .3s linear;    
+    -webkit-transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear;
   }
 
   .to-eat {
     width: 430px;
-    height: 125px;
+    height: 300px;
     margin-bottom: 2%;
     background: #ffffff;
-    box-shadow: 8px 8px 8px #c4dcff;
     border-radius: 25px;
+  }
+
+  .to-eat:hover {
+    box-shadow: 8px 8px 8px #c4dcff;
+    transition:all .3s linear;    
+    -webkit-transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear;
   }
 
   .to-read {
     width: 430px;
-    height: 125px;
+    height: 300px;
     margin-bottom: 2%;
     background: #ffffff;
-    box-shadow: 8px 8px 8px #c4dcff;
     border-radius: 25px;
+  }
+
+  .to-read:hover {
+    box-shadow: 8px 8px 8px #c4dcff;
+    transition:all .3s linear;    
+    -webkit-transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear;
   }
 
   .to-buy {
     width: 430px;
-    height: 125px;
+    height: 300px;
     margin-bottom: 2%;
     background: #ffffff;
-    box-shadow: 8px 8px 8px #c4dcff;
     border-radius: 25px;
+  }
+
+  .to-buy:hover {
+    box-shadow: 8px 8px 8px #c4dcff;
+    transition:all .3s linear;    
+    -webkit-transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear;
   }
 
 }
