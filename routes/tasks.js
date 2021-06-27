@@ -1,13 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const { Pool } = require('pg');
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
-    db.query(`SELECT * FROM tasks;`)
+    db.query(`SELECT * FROM tasks`)
       .then(data => {
-        const tasks = data.rows;
-        res.json({tasks});
+        console.log(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+  router.get('/:id', (req, res) => {
+    db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [req.params.id])
+      .then(data => {
+        res.json(data.rows);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+  router.post('/', (req, res) => {
+    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, "watch watchmen", "to-watch", "Now()"])
+      .then(data => {
+        const { response } = data.rows;
+        res.json(response);
       })
       .catch(err => {
         res
@@ -17,18 +38,3 @@ module.exports = (db) => {
   });
   return router;
 };
-
-router.post('/tasks/create', (req, res) => {
-
-  let { name, user_id, category_id, order, date_created } = req.body
-  //INSERT
-  knex('tasks').insert({
-    name: name,
-    user_id: req.session.id,
-    category_id: category_id,
-    order: order,
-    date_created: date_created
-  }).then(() => {
-    res.redirect('/:id');
-  });
-});
