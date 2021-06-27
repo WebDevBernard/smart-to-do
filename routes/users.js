@@ -34,5 +34,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // make edit route for user profiles
+  
   return router;
 };
