@@ -96,18 +96,42 @@ body {
   width: 95%;
   height: 100vh;
 
+  }
+
   .add-task {
     // position: absolute;
-    width: 200px;
-    height: 60px;
     float: right;
+    width: 220px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+   
     margin-top: 2%;
     margin-right: 5%;
     background: linear-gradient(90deg, #3d75c9 0%, #69a4fe 73.7%);
     border-radius: 50px;
 
+    textarea {
+      resize: none;
+      // margin-top: 1em;
+      width: 100%;
+      height: 28px;
+      border: 0px;
+      font-family: $font-stack;
+      font-size: 1em;
+      font-weight: 400px;
+      background-color: inherit;
+      padding-left: 10%;
+      margin-top: 8%;
+    }
+
+
+    ::placeholder {
+      font-weight: 400;
+      color: #ffffff;
+    }
+
     button {
-      display: flex;
       margin-top: 10%;
       background-color: inherit;
       border: 0px;
@@ -115,32 +139,13 @@ body {
       color: #ffffff;
       font-weight: 500;
       font-size: 1.1em;
-      width: 200px;
+      width: 50px;
+      margin-left: 5%;
   
-      textarea {
-        resize: none;
-        // margin-top: 1em;
-        width: 55%;
-        height: 28px;
-        border: 0px;
-        font-family: $font-stack;
-        font-size: 1em;
-        font-weight: 400px;
-        background-color: inherit;
-        color: #ffffff;
-        opacity: 100%;
-        padding-left: 5%;
-
-      }
-
       i {
         padding-right: 5%;
-        padding-bottom: 20%;
         padding-left: 10%;
       }
-  
-
-      
     }
   }
 
@@ -181,4 +186,3 @@ body {
     -o-transition:all .3s linear;
     -moz-transition:all .3s linear;
   }
-}

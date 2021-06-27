@@ -9,6 +9,7 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -30,8 +31,8 @@
     <main class="container">
       <!-- the button to add a task -->
       <div class="add-task">
-        <form action="/:id" method="POST" id="tasksform">
-          <button type="submit" name="task" class="task-button"><i class="fas fa-feather fa-lg"></i><textarea name="text" placeholder="add a task" id="task-test"></textarea></button>
+        <form action="/:id" method="POST" id="tasksform"><textarea name="text" placeholder="add a task" id="task-test"></textarea>
+          <button type="submit" name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
         </form>
       </div>
       
@@ -40,8 +41,11 @@
       <div class="cards">
 
         <!-- this is the to watch card -->     
-        <section class="category-card">
-        </section>
+        <div class="category-card">
+          <section class="to-watch-list">
+            
+          </section>
+        </div>
         <!-- this is the to eat card -->
         <div class="category-card">
           <h5>places to eat at</h5>
