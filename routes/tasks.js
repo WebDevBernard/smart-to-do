@@ -3,22 +3,19 @@ const router = express.Router();
 const { Pool } = require('pg');
 
 module.exports = (db) => {
-  router.get('/:id', (req, res) => {
-    db.query(`
-      SELECT *,
-      FROM tasks,
-      WHERE user_id = $1`,
-      [req.params.id])
-      .then(response => {
-        res.json(response.rows);
+  router.get('/', (req, res) => {
+    db.query(`SELECT * FROM tasks;`)
+      .then(data => {
+        const tasks = data.rows;
+        res.json({tasks});
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
-    return router;
   });
+  return router;
 };
 
 router.post('/tasks/create', (req, res) => {
