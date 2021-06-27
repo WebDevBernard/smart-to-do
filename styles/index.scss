@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+$
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* global styles */
+body {
+  margin: 0;
+  font-size: 1em;
+  font-family: 'Inter', sans-serif;
+  line-height: 16px;
+  word-break: break-word;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: #1655b4;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+h5 {
+  font-size: 1.2em;
+  color: #000000;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 24px;
+}
+
+ul li:before {
+  content:'○';
+  position:absolute;
+  display:block;
+  left:0;
+  top:-1px;
+  font-size:16px;
+  color:rgb(190,190,190);
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+  -webkit-transition:all .4s ease-out;
+  transition:all .4s ease-out;
+}
+
+a:hover {
+  color: #69A4FE!important;
+}
+
+/* sidebar */
+aside {
+  position:fixed;
+  left:788px;
+  right:0;
+  top:0;
+  bottom:0;
+  padding:124px 48px 124px 107px;
+  min-width:100px;
+  background-color:#69A4FE;
+}
+
+aside img {
+  position: absolute;
+  height: 100px;
+  margin-top: 50px;
+  margin-left: 1275px;
+}
+
+.container {
+  background-color: #EEF4FF;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 2%;
+}
+
+/* main container styles */
+
+.add-task {
+  position: absolute;
+  width: 220px;
+  height: 64px;
+  left: 880px;
+  top: 65px;
+  background: linear-gradient(90deg, #3d75c9 0%, #69a4fe 73.7%);
+  border-radius: 20px;
+}
+
+.cards {
+  width: 50%;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.to-watch {
+  width: 430px;
+  height: 155px;
+  background: #ffffff;
+  box-shadow: 8px 8px 10px #dfecff;
+  border-radius: 25px;
+}
+
+.to-eat {
+  width: 430px;
+  height: 155px;
+  background: #ffffff;
+  box-shadow: 8px 8px 10px #dfecff;
+  border-radius: 25px;
+}
+
+.to-read {
+  width: 430px;
+  height: 155px;
+  background: #ffffff;
+  box-shadow: 8px 8px 10px #dfecff;
+  border-radius: 25px;
+}
+
+.to-buy {
+  width: 430px;
+  height: 155px;
+  background: #ffffff;
+  box-shadow: 8px 8px 10px #dfecff;
+  border-radius: 25px;
+}
+
