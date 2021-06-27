@@ -6,20 +6,33 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
+
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-  return router;
+//   //login
+//   router.post("/login", (req, res) => {
+//     let loginCheck = false;
+//     let { email, password } = req.body;
+//   })
+//   if (!email || !password) {
+//     loginCheck = false;
+//     //error message
+//     res.redirect("/");
+//   }
+// }
+
+router.get("/", (req, res) => {
+  db.query(`SELECT * FROM users WHERE user_id = 1;`)
+    .then(data => {
+      const users = data.rows;
+      res.json({ users });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+return router;
 };
