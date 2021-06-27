@@ -48,4 +48,17 @@ $(document).ready(function() {
     });
   };
 
+  // event listener for submit
+  $('#tasksform').on("submit", function(event) {
+    event.preventDefault();
+
+    let data = $("#task-text").serialize().replace("text=", "");
+
+    postTweet(data);
+
+
+    // clears task area
+    $("#task-text").val('');
+  })
+
 });
