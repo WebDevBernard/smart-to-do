@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+$font-stack: 'Inter', sans-serif;
+$primary-color: #1655b4;
+
+// main body stuff
+
+.container {
+  background-color: #EEF4FF;
+  display: inline-block;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: center;
+  width: 92%;
+  height: inherit;
+
+}
+
+.add-task {
+  float: right;
+  width: 220px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 2%;
+  margin-right: 5%;
+  background: linear-gradient(90deg, #3d75c9 0%, #69a4fe 73.7%);
+  border-radius: 50px;
+
+  textarea {
+    resize: none;
+    width: 45%;
+    height: 18px;
+    border: 0px;
+    font-family: $font-stack;
+    font-size: 1em;
+    font-weight: 400px;
+    background-color: inherit;
+    margin-left: 15%;
+    margin-top: -2%;
+  }
+
+
+  ::placeholder {
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  button {
+    margin-top: 10%;
+    background-color: inherit;
+    border: 0px;
+    margin-left: 1%;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.1em;
+    width: 50px;
+    margin-left: 5%;
+
+    i {
+      margin-right: 5%;
+      margin-left: 10%;
+    }
+
+    i:hover {
+      color: #1655b4;
+      -webkit-transition:all .3s linear;
+      -o-transition:all .3s linear;
+      -moz-transition:all .3s linear;  
+    }
+  }
+}
+
+.add-task:hover {
+  box-shadow: 8px 8px 8px #c4dcff;
+  transition:all .3s linear;    
+  -webkit-transition:all .3s linear;
+  -o-transition:all .3s linear;
+  -moz-transition:all .3s linear;    
+}

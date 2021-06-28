@@ -5,7 +5,7 @@ require('dotenv').config();
 const PORT       = process.env.PORT || 8080;
 const ENV        = process.env.ENV || "development";
 const express    = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser"); deprecated
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
@@ -22,7 +22,6 @@ db.connect();
 app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -37,9 +36,9 @@ const widgetsRoutes = require("./routes/widgets");
 const tasksRoutes = require("./routes/tasks");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/tasks", tasksRoutes(db));
+app.use("/users", usersRoutes(db));
+app.use("/widgets", widgetsRoutes(db));
+app.use("/tasks", tasksRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
