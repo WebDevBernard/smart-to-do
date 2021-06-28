@@ -19,15 +19,18 @@ module.exports = (db) => {
     db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
       .then(data => {
         const response = data.rows;
-        res.json({ response });
+        res.json(response);
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
+    const templateVars =
+    res.render('index', templateVars)
   });
-  router.post('/', (req, res) => {
+
+  router.post('/:id', (req, res) => {
     const userTask = req.body;
     const userId = req.params.id;
     db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
@@ -41,6 +44,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   router.put('/:id', (req, res) => {
     const userTask = req.body;
     const userId = req.params.id;

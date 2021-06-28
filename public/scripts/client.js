@@ -11,9 +11,9 @@ $(document).ready(function() {
 
   // renders the timeline in reverse-chronological order
   const renderTasks = function(tasks) {
-    $('.tasks-timeline').empty();
+    $('.category-card').empty();
       tasks.forEach(function(tweet) {
-        createTaskElement(task).appendTo('.tasks-timeline');
+        createTaskElement(task).appendTo('.category-card');
       });
   }
 
@@ -21,7 +21,7 @@ $(document).ready(function() {
   const loadTasks = function() {
     $.ajax({
       method: 'GET',
-      url: '/',
+      url: '/tasks/:id',
       data: $('#tasksform').serialize(),
       dataType: 'json',
       success: function (data) {
@@ -47,5 +47,18 @@ $(document).ready(function() {
       }
     });
   };
+
+  // event listener for submit
+  $('#tasksform').on("submit", function(event) {
+    event.preventDefault();
+
+    let data = $("#task-text").serialize().replace("text=", "");
+
+    postTweet(data);
+
+
+    // clears task area
+    $("#task-text").val('');
+  })
 
 });

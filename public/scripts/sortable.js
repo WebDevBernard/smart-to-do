@@ -1,4 +1,4 @@
-$().ready(() => {
+$(document).ready(function() {
   Sortable.create(towatch, {
     group: 'shared',
     animation: 150
