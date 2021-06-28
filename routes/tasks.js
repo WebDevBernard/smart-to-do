@@ -27,9 +27,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  router.post('/:id', (req, res) => {
+  router.post('/', (req, res) => {
     const userTask = req.body;
-    console.log(req)
     const userId = req.params.id;
     db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
       .then(data => {
