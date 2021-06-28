@@ -23,6 +23,8 @@ $primary-color: #1655b4;
     height: 250px;
     background: #ffffff;
     border-radius: 25px;
+    overflow: hidden;
+    overflow-y: auto;
   }
 
   .category-card1 {
