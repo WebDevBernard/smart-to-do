@@ -5,18 +5,19 @@ $font-stack: 'Inter', sans-serif;
 $primary-color: #1655b4;
 
 .cards {
-    width: 65%;
-    height: 100%;
-    display: flex;
-    margin-top: 10%;
-    margin-left: 10%;
-    padding-bottom: 10%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-between;
-  }
+  width: 65%;
+  height: 100%;
+  display: flex;
+  margin-top: 10%;
+  margin-left: 10%;
+  padding-bottom: 10%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
+}
   
+<<<<<<< HEAD
   .category-card {
     width: 300px;
     margin-bottom: 3%;
@@ -34,11 +35,42 @@ $primary-color: #1655b4;
     background: #ffffff;
     border-radius: 25px;
   }
+=======
+.category-card {
+  width: 300px;
+  margin-bottom: 3%;
+  height: 250px;
+  background: #ffffff;
+  border-radius: 0px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+>>>>>>> c4d206bf0ba27767d91c256d36043b2399c7de93
   
-  .category-card:hover {
-    box-shadow: 8px 8px 8px #c4dcff;
-    transition:all .3s linear;    
-    -webkit-transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-  }
+.category-card:hover {
+  box-shadow: 8px 8px 8px #c4dcff;
+  transition:all .3s linear;    
+  -webkit-transition:all .3s linear;
+  -o-transition:all .3s linear;
+  -moz-transition:all .3s linear;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width:2px;
+  height:10px;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-track {
+  border:8px solid inherit;
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  border:2px solid inherit;
+  background-color: $primary-color;
+  min-height:10px;
+  width:2px;
+}

@@ -34,8 +34,8 @@
     <main class="container">
       <!-- the button to add a task -->
       <div class="add-task">
-        <form action="/tasks" method="POST" id="tasksform">
-          <button type="submit" name="task" class="task-button"><i class='far fa-edit fa-lg'></i> <textarea name="text" placeholder="add a task"></textarea></button>
+        <form action="/:id" method="POST" id="tasksform"><textarea name="text" placeholder="add a task" id="task-test"></textarea>
+          <button type="submit" name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
         </form>
       </div>
 
@@ -44,7 +44,7 @@
 
         <!-- this is the to watch card -->
         <section class="category-card">
-          <h5>things to buy</h5>
+          <h5>things to watch</h5>
           <ul id="towatch">
                 <script>
                 $(document).ready(() => {
