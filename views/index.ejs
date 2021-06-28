@@ -1,112 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>to-do</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main-html.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/cards.css" type="text/css" />
+<head>
+  <title>to-do</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/sortable.js"></script>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main-html.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/cards.css" type="text/css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
 
-  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <body>
-    <!-- sidebar w/ profile icon -->
-    <div class="sidebar">
-      <aside>
-        <a href="/edit"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></a>
-      </aside>
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+
+</head>
+
+<body>
+  <!-- sidebar w/ profile icon -->
+  <div class="sidebar">
+    <aside>
+      <a href="/edit"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></a>
+    </aside>
+  </div>
+
+  <!-- tasks view here -->
+  <main class="container">
+    <!-- the button to add a task -->
+    <div class="add-task">
+      <!-- <form action="/tasks" method="POST" id="tasksform">  -->
+        <textarea name="text-box" id="text-box" >sdsddsas</textarea>
+      <textarea name="text" id="task-test-1">abc</textarea>
+      <button name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
+      <!-- </form> -->
     </div>
 
-    <!-- tasks view here -->
-    <main class="container">
-      <!-- the button to add a task -->
-      <div class="add-task">
-        <form action="/:id" method="POST" id="tasksform"><textarea name="text" placeholder="add a task" id="task-test"></textarea>
-          <button type="submit" name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
-        </form>
-      </div>
 
-      <!-- the div for the 4 category cards -->
-      <div class="cards">
+    <!-- the div for the 4 category cards -->
+    <div class="cards">
 
-        <!-- this is the to watch card -->
-        <section class="category-card">
-          <h5>things to watch</h5>
-          <ul id="towatch">
-                <script>
-                $(document).ready(() => {
-                  $.ajax({
-                    method:'GET',
-                    url: "/tasks",
-                    success: (data) => {
-                      const result = [];
-                      for (const task of data) {
-                        result.push(`<li>${task.name}</li>`);
-                        $("#towatch").html(result);
-                      }
-                    },
-                  });
-                })
-              </script>
-            </ul>
+      <!-- this is the to watch card -->
+      <section class="category-card">
+        <h5>things to watch</h5>
+        <ul id="towatch">
+          <script>
+            $(document).ready(() => {
+              $.ajax({
+                method: 'GET',
+                url: "/tasks",
+                success: (data) => {
+                  const result = [];
+                  for (const task of data) {
+                    result.push(`<li>${task.name}</li>`);
+                    $("#towatch").html(result);
+                  }
+                },
+              });
+            })
+          </script>
+        </ul>
 
-        </section>
-        <!-- this is the to eat card -->
-        <div class="category-card">
-          <h5>places to eat at</h5>
+      </section>
+      <!-- this is the to eat card -->
+      <div class="category-card">
+        <h5>places to eat at</h5>
 
-          <ul id="toeat">
-            <li>yolks</li>
-            <li>osterio savio volpe</li>
-            <li>osterio savio volpe</li>
-            <li>osterio savio volpe</li>
-          </ul>
+        <ul id="toeat">
+          <li>yolks</li>
+          <li>osterio savio volpe</li>
+          <li>osterio savio volpe</li>
+          <li>osterio savio volpe</li>
+        </ul>
 
-          <!-- this will eventually be a section like this:
+        <!-- this will eventually be a section like this:
           <section class="to-eat-list"></section> -->
-        </div>
-
-        <!-- this is the to read card -->
-        <div class="category-card">
-          <h5>books to read</h5>
-          <ul id="toread">
-            <li >the name of the wind</li>
-            <li >mistborn</li>
-          </ul>
-          <!-- this will eventually be a section like this:
-          <section class="to-read-list"></section> -->
-        </div>
-
-        <!-- this is the to buy card -->
-        <div class="category-card">
-          <h5>things to buy</h5>
-          <ul id="tobuy">
-            <li>shampoo</li>
-            <li>potatoes</li>
-          </ul>
-          <!-- this will eventually be a section like this:
-          <section class="to-buy-list"></section> -->
-        </div>
-
       </div>
 
+      <!-- this is the to read card -->
+      <div class="category-card">
+        <h5>books to read</h5>
+        <ul id="toread">
+          <li>the name of the wind</li>
+          <li>mistborn</li>
+        </ul>
+        <!-- this will eventually be a section like this:
+          <section class="to-read-list"></section> -->
+      </div>
 
-    </main>
-  </body>
+      <!-- this is the to buy card -->
+      <div class="category-card">
+        <h5>things to buy</h5>
+        <ul id="tobuy">
+          <li>shampoo</li>
+          <li>potatoes</li>
+        </ul>
+        <!-- this will eventually be a section like this:
+          <section class="to-buy-list"></section> -->
+      </div>
+
+    </div>
+
+
+  </main>
+
+</body>
+  <!-- <script>$(window).ready(function() {
+    $(".task-button").click(function() {
+      // console.log(window.getElementById("task-text-1"))
+      console.log($('#text-box').val())        });              });
+</script> -->
+
+      <!-- <script>  $(() => {
+            $('.task-button').on("click", function(event) {
+              // event.preventDefault();
+              console.log(document.getElementById("task-text-1").value)
+              console.log($('#task-text-1').val())
+
+              let data = $("#task-text-1").serialize().replace("text=", "");
+              console.log(data)
+              // postTweet(data);
+
+
+              // clears task area
+              $("#task-text-1").val('');
+            })
+          });
+
+</script> -->
+<script type="text/javascript" src="/scripts/sortable.js"></script>
 </html>
-
-
-

@@ -30,19 +30,26 @@ module.exports = (db) => {
     res.render('index', templateVars)
   });
 
-  router.post('/:id', (req, res) => {
-    const userTask = req.body;
-    const userId = req.params.id;
+  router.post('/', (req, res) => {
+    const userTask = req.body.data;
+    const userId = 1;
+    console.log("usertask:", userTask)
+    console.log("userid:", userId)
+    // console.log(req)
+    // console.log(res)
     db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
       .then(data => {
+        console.log(data)
         const response = data.rows;
         res.json(response);
       })
       .catch(err => {
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });
       });
+
   });
 
   router.put('/:id', (req, res) => {
