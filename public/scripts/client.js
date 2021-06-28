@@ -1,37 +1,4 @@
-
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($(".tasks-timeline"));
-    }
-  });;
-
-  $.ajax({
-    method: 'GET',
-    url: '/tasks/:id',
-    data: $('#tasksform').serialize(),
-    dataType: 'json',
-  }).done((tasks) => {
-    for(task of tasks) {
-      $("<section class='to-watch-list'></section>").text(task.name).appendTo($("<div class='category-card'></div>"));
-    }
-  });
-    
-  $.ajax({
-    method:'GET',
-    url: "/tasks",
-    success: (data) => {
-      for (task of data) {
-        const result=`<td>${task[1].name}</td>`
-        $("#result").html(result);
-      }
-    },
-  });
-});
-
+$(document).ready(function() {
   // creating the list article element
   const createTaskElement = function({task: {id, name, category_name, date_created}}) {
     const $task = $(`<article class="tweet-container"></article>`);
@@ -62,7 +29,6 @@ $(() => {
       }
     });
   };
-
   loadTasks;
 
   // using ajax to submit the tasks
@@ -70,7 +36,7 @@ $(() => {
     $.ajax({
       method: 'POST',
       data: data,
-      url: '/tasks/:id',
+      url: '/:id',
 
       success: function (result) {
         loadTasks();
@@ -83,7 +49,7 @@ $(() => {
   };
 
   // event listener for submit
-  $('.task-button').on("submit", function(event) {
+  $('#tasksform').on("submit", function(event) {
     event.preventDefault();
 
     let data = $("#task-text").serialize().replace("text=", "");
@@ -95,5 +61,4 @@ $(() => {
     $("#task-text").val('');
   })
 
-  module.exports = { loadTasks };
 });
