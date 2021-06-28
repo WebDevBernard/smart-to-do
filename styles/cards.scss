@@ -17,7 +17,6 @@ $primary-color: #1655b4;
   align-items: space-between;
 }
   
-<<<<<<< HEAD
   .category-card {
     width: 300px;
     margin-bottom: 3%;
@@ -35,17 +34,6 @@ $primary-color: #1655b4;
     background: #ffffff;
     border-radius: 25px;
   }
-=======
-.category-card {
-  width: 300px;
-  margin-bottom: 3%;
-  height: 250px;
-  background: #ffffff;
-  border-radius: 0px;
-  overflow: hidden;
-  overflow-y: auto;
-}
->>>>>>> c4d206bf0ba27767d91c256d36043b2399c7de93
   
 .category-card:hover {
   box-shadow: 8px 8px 8px #c4dcff;

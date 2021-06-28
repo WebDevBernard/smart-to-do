@@ -83,7 +83,7 @@ $(() => {
   };
 
   // event listener for submit
-  $('.task-button').on("submit", function(event) {
+  $('.task-button').on("click", function(event) {
     event.preventDefault();
 
     let data = $("#task-text").serialize().replace("text=", "");

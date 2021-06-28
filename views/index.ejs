@@ -34,35 +34,29 @@
     <main class="container">
       <!-- the button to add a task -->
       <div class="add-task">
-        <form action="/:id" method="POST" id="tasksform"><textarea name="text" placeholder="add a task" id="task-test"></textarea>
+        <form action="/tasks" method="POST" id="tasksform"><textarea name="text" placeholder="add a task" id="task-test"></textarea>
           <button type="submit" name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
         </form>
       </div>
 
       <!-- the div for the 4 category cards -->
       <div class="cards">
-
+        <ul id="towatch"></ul>
         <!-- this is the to watch card -->
         <section class="category-card">
-          <h5>things to watch</h5>
-          <ul id="towatch">
-                <script>
+          <div id="result"></div>
+              <script>
                 $(document).ready(() => {
-                  $.ajax({
-                    method:'GET',
-                    url: "/tasks",
-                    success: (data) => {
-                      const result = [];
-                      for (const task of data) {
-                        result.push(`<li>${task.name}</li>`);
-                        $("#towatch").html(result);
-                      }
-                    },
-                  });
+                    $.ajax({
+                      method:'GET',
+                      url: "/tasks",
+                      success: (data) => {
+                      const result=`<td>${data[1].name}</td>`
+                      $("#result").html(result);
+                  }
+                  })
                 })
               </script>
-            </ul>
-
         </section>
         <!-- this is the to eat card -->
         <div class="category-card">
