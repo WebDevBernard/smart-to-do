@@ -19,6 +19,18 @@ $(() => {
       $("<section class='to-watch-list'></section>").text(task.name).appendTo($("<div class='category-card'></div>"));
     }
   });
+    
+  $.ajax({
+    method:'GET',
+    url: "/tasks",
+    success: (data) => {
+      for (task of data) {
+        const result=`<td>${task[1].name}</td>`
+        $("#result").html(result);
+      }
+    },
+  });
+});
 
   // creating the list article element
   const createTaskElement = function({task: {id, name, category_name, date_created}}) {
@@ -52,6 +64,36 @@ $(() => {
   };
 
   loadTasks;
+
+  // using ajax to submit the tasks
+  const postTweet = function(data) {
+    $.ajax({
+      method: 'POST',
+      data: data,
+      url: '/tasks/:id',
+
+      success: function (result) {
+        loadTasks();
+        $('.add-task textarea').val('');
+      },
+      error: function (err) {
+        console.log('error');
+      }
+    });
+  };
+
+  // event listener for submit
+  $('.task-button').on("submit", function(event) {
+    event.preventDefault();
+
+    let data = $("#task-text").serialize().replace("text=", "");
+
+    postTweet(data);
+
+
+    // clears task area
+    $("#task-text").val('');
+  })
 
   module.exports = { loadTasks };
 });

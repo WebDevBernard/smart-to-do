@@ -29,6 +29,7 @@ module.exports = (db) => {
     const templateVars = 
     res.render('index', templateVars)
   });
+  
   router.post('/:id', (req, res) => {
     const userTask = req.body;
     const userId = req.params.id;
@@ -43,6 +44,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  
   router.put('/:id', (req, res) => {
     const userTask = req.body;
     const userId = req.params.id;

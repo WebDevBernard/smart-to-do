@@ -35,7 +35,21 @@ module.exports = (db) => {
       });
   });
 
+  // login route
+  router.get('/login/:id', (req, res) => {
+    req.session.user_id = req.params.id;
+    res.redirect('/');
+  });
+
   // make edit route for user profiles
-  
+  router.get("/edit/:id", (req, res) => {
+    const templateVars = {
+      user: req.params.id,
+    };
+
+    res.render("edit", templateVars);
+    return;
+  });
+
   return router;
 };
