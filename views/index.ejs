@@ -9,12 +9,14 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/sortable.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
 
   </head>
 
@@ -34,22 +36,37 @@
           <button type="submit" name="task" class="task-button"><i class='far fa-edit fa-lg'></i> <textarea name="text" placeholder="add a task"></textarea></button>
         </form>
       </div>
-      
 
       <!-- the div for the 4 category cards -->
       <div class="cards">
-
-        <!-- this is the to watch card -->     
+        <ul id="towatch"></ul>
+        <!-- this is the to watch card -->
         <section class="category-card">
-
+          <div id="result"></div>
+              <script>
+                $(document).ready(() => {
+                    $.ajax({
+                      method:'GET',
+                      url: "/tasks",
+                      success: (data) => {
+                      const result=`<td>${data[1].name}</td>`
+                      $("#result").html(result);
+                  }
+                  })
+                  })
+              </script>
         </section>
         <!-- this is the to eat card -->
         <div class="category-card">
           <h5>places to eat at</h5>
-          <ul>
+
+          <ul id="toeat">
             <li>yolks</li>
             <li>osterio savio volpe</li>
+            <li>osterio savio volpe</li>
+            <li>osterio savio volpe</li>
           </ul>
+
           <!-- this will eventually be a section like this:
           <section class="to-eat-list"></section> -->
         </div>
@@ -57,9 +74,9 @@
         <!-- this is the to read card -->
         <div class="category-card">
           <h5>books to read</h5>
-          <ul>
-            <li>the name of the wind</li>
-            <li>mistborn</li>
+          <ul id="toread">
+            <li >the name of the wind</li>
+            <li >mistborn</li>
           </ul>
           <!-- this will eventually be a section like this:
           <section class="to-read-list"></section> -->
@@ -68,7 +85,7 @@
         <!-- this is the to buy card -->
         <div class="category-card">
           <h5>things to buy</h5>
-          <ul>
+          <ul id="tobuy">
             <li>shampoo</li>
             <li>potatoes</li>
           </ul>
@@ -82,3 +99,6 @@
     </main>
   </body>
 </html>
+
+
+

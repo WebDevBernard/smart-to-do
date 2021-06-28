@@ -6,7 +6,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM tasks`)
       .then(data => {
         const response = data.rows;
-        res.json({ response });
+        res.json( response );
       })
       .catch(err => {
         res
@@ -29,11 +29,12 @@ module.exports = (db) => {
   });
   router.post('/:id', (req, res) => {
     const userTask = req.body;
+    console.log(req)
     const userId = req.params.id;
     db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
       .then(data => {
         const response = data.rows;
-        console.log({ response });
+        res.json(response);
       })
       .catch(err => {
         res
