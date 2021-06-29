@@ -1,11 +1,35 @@
 $(() => {
+  // using ajax to load the tasks
   const loadTasks = () => {
-    $.get('/tasks')
-      .then((tasks) => {
-        renderTasks(tasks.reverse());
-      });
+    // $.get('/tasks')
+    //   .then((tasks) => {
+    //     renderTasks(tasks.reverse());
+    //   });
+    // $.ajax({
+    //   method: "GET",
+    //   url: "/tasks",
+    //   data: $("#text-box").text(),
+    //   dataType: "json",
+    //   success: function(data) {
+    //     renderTasks(data);
+    //   },
+    // });
+
+    $.ajax({
+      method: 'GET',
+      url: "/tasks",
+      success: (data) => {
+        const result = [];
+        for (const task of data) {
+          result.push(`<li>${task.name}</li>`);
+          $(`#${task.category_name}`).html(result);
+        }
+      },
+    });
   };
-  // // creating the list article element
+  loadTasks();
+
+  // reating the list article element
   const createTaskElement = (task) => {
     const newTask = `
     <div class="category-card">
@@ -15,35 +39,37 @@ $(() => {
       </ul>
     </div>`;
 
-    return $(newTask)
+    return $(newTask);
   };
 
-  // // renders the timeline in reverse-chronological order
-  const renderTasks = function(tasks) {
-    const $taskList = $('#category-card');
+  // // renders the tasks in reverse-chronological order
+  const renderTasks = function (tasks) {
+    const $taskList = $("#category-card");
     $taskList.empty();
     for (const task of tasks) {
       $taskList.append(createTaskElement(task));
     }
-  }
+  };
 
-  // // using ajax to load the tasks
+  const $newTextBox = $(".text-box");
 
-
-
-  const $newTextBox = $(".text-box")
   // event listener for submit
-  $newTextBox.submit(function(event) {
+  $newTextBox.on("click", function (event) {
     event.preventDefault();
     const data = $(this).serialize();
+    // posting the new task
     $.ajax({
       url: "/tasks",
-      method: "POST"
+      method: "POST",
       data: data,
-      success: function() {
+
+      success: function (result) {
         loadTasks();
-      });
-  }
-      })
-loadTasks();
+        $("#text-box").val("");
+      },
+      error: function (err) {
+        console.log("error:", err);
+      },
+    });
+  });
 });

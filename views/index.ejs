@@ -12,6 +12,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/modal.js"></script>
   <script type="text/javascript" src="/scripts/sortable.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -29,8 +30,31 @@
   <!-- sidebar w/ profile icon -->
   <div class="sidebar">
     <aside>
-      <a href="/edit"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></a>
+      <!-- <button class="open"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></button> -->
+      <button id="myBtn"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></button>
     </aside>
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form method="UPDATE" action="users" id="edit-profile">
+        <h3 class="edit">edit profile</h3>
+        <label for="username">email:</label><p>
+        <input name="username" id="username" />
+        <p>
+    
+        <label for="password">password:</label><p>
+        <input name="password" id="password" />
+        <p>
+    
+        <button type="submit" class="edit-button">submit!</button>
+      </form>
+    </div>
+
   </div>
 
   <!-- tasks view here -->
@@ -50,8 +74,8 @@
       <!-- this is the to watch card -->
       <section class="category-card">
         <h5>things to watch</h5>
-        <ul id="towatch">
-          <script>
+        <ul id="to-watch">
+          <!-- <script>
             $(document).ready(() => {
               $.ajax({
                 method: 'GET',
@@ -65,7 +89,7 @@
                 },
               });
             })
-          </script>
+          </script> -->
         </ul>
 
       </section>
@@ -73,7 +97,7 @@
       <div class="category-card">
         <h5>places to eat at</h5>
 
-        <ul id="toeat">
+        <ul id="to-eat">
           <li>yolks</li>
           <li>osterio savio volpe</li>
           <li>osterio savio volpe</li>
@@ -87,7 +111,7 @@
       <!-- this is the to read card -->
       <div class="category-card">
         <h5>books to read</h5>
-        <ul id="toread">
+        <ul id="to-read">
           <li>the name of the wind</li>
           <li>mistborn</li>
         </ul>
@@ -98,7 +122,7 @@
       <!-- this is the to buy card -->
       <div class="category-card">
         <h5>things to buy</h5>
-        <ul id="tobuy">
+        <ul id="to-buy">
           <li>shampoo</li>
           <li>potatoes</li>
         </ul>
@@ -110,7 +134,7 @@
 
 
   </main>
-
+  <script src="./scripts/modal.js"></script>
 </body>
   <!-- <script>$(window).ready(function() {
     $(".task-button").click(function() {

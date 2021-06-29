@@ -29,7 +29,13 @@ body {
   h5 {
     color: #244751;
     font-size: 1.2em;
-    padding-left: 7%;
+    margin-left: 7%;
+  }
+
+  .edit {
+    padding: none;
+    color: #244751;
+    font-size: 1.2em;
   }
 
   ul {
@@ -72,6 +78,61 @@ body {
     color: #69A4FE!important;
   }
 
+  //for the whole modal component
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+  /* Modal Content/Box */
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%; /* Could be more or less, depending on screen size */
+      text-align: center;
+  }
+
+  /* The Close Button */
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  .edit-button {
+    border-radius: 10px;
+    background-color: #69A4FE;
+    border: none;
+    margin-top: 1%;
+    padding: 1%;
+    color: #ffffff;
+  }
+
+  .edit-button:hover {
+    background-color: #1655b4;
+    -webkit-transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear; 
+  }
+
   aside {
     position: fixed;
     float: right;
@@ -83,14 +144,20 @@ body {
     background-color:#69A4FE;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
 
     img {
       height: 50px;
       width: 50px;
-      margin-top: 55%;
       margin-left: -25%;
+    }
+    
+    button {
+      background-color: inherit;
+      border: none;
+      margin: auto;
+      margin-top: 50%;
     }
   }
 }
