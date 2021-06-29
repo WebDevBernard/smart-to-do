@@ -28,7 +28,7 @@ $primary-color: #1655b4;
   background: linear-gradient(90deg, #3d75c9 0%, #69a4fe 73.7%);
   border-radius: 50px;
 
-  textarea {
+  #textbox {
     resize: none;
     width: 50%;
     height: 20px;
@@ -48,7 +48,7 @@ $primary-color: #1655b4;
     color: #ffffff;
   }
 
-  .task-button {
+  .taskbutton {
     margin-top: 10%;
     background-color: inherit;
     border: 0px;

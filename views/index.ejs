@@ -13,7 +13,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/modal.js"></script>
-  <script type="text/javascript" src="/scripts/sortable.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/sortable.js"></script> -->
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -21,8 +21,8 @@
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script> -->
 
 </head>
 
@@ -60,9 +60,9 @@
   <main class="container">
     <!-- the button to add a task -->
     <div class="add-task">
-      <form action="/tasks" method="POST" id="tasksform">
-        <textarea name="text-box" id="text-box"></textarea>
-      <button name="task" class="task-button"><i class="fas fa-feather fa-lg"></i></button>
+      <form id="tasksform">
+        <textarea name="name" id="textbox"></textarea>
+      <button name="task" class="taskbutton"><i class="fas fa-feather fa-lg"></i></button>
       </form>
     </div>
 
@@ -82,10 +82,6 @@
         <h5>places to eat at</h5>
 
         <ul id="to-eat">
-          <li>yolks</li>
-          <li>osterio savio volpe</li>
-          <li>osterio savio volpe</li>
-          <li>osterio savio volpe</li>
         </ul>
       </div>
 
@@ -93,8 +89,6 @@
       <div class="category-card">
         <h5>books to read</h5>
         <ul id="to-read">
-          <li>the name of the wind</li>
-          <li>mistborn</li>
         </ul>
       </div>
 
@@ -102,8 +96,6 @@
       <div class="category-card">
         <h5>things to buy</h5>
         <ul id="to-buy">
-          <li>shampoo</li>
-          <li>potatoes</li>
         </ul>
       </div>
 

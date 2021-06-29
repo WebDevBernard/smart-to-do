@@ -19,7 +19,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
       .then(data => {
         const response = data.rows;
-        res.json( {response} );
+        res.json({ response });
       })
       .catch(err => {
         res
@@ -29,10 +29,10 @@ module.exports = (db) => {
   });
 
   router.post('/', (req, res) => {
-    const  { name }  = req.body;
-    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, name, "to-watch", "Now()"])
+    const name = req.body.name;
+    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, name, categorizeFunction(name), "Now()"])
       .then(data => {
-        res.json({ success: true });
+        res.json({ data });
       });
 
   });

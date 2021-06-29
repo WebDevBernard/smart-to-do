@@ -1,5 +1,5 @@
 $(document).ready(function() {
-Sortable.create(towatch, {
+Sortable.create("#to-watch", {
     group: 'shared',
     animation: 150,
     removeOnSpill: true,
@@ -23,17 +23,17 @@ Sortable.create(towatch, {
         localStorage.setItem(sortable.options.group.name, order.join('|'));
       }
     }
-  }); new Sortable(toeat, {
+  }); new Sortable("#to-eat", {
     group: 'shared',
     animation: 150,
     removeOnSpill: true
   });
-  ; new Sortable(toread, {
+  ; new Sortable("#to-read", {
     group: 'shared',
     animation: 150,
     removeOnSpill: true
   });
-  ; new Sortable(tobuy, {
+  ; new Sortable("#to-buy", {
     group: 'shared',
     animation: 150,
     removeOnSpill : true

@@ -1,4 +1,43 @@
 $(() => {
+  // creating the list article element
+  const createTaskElement = (task) => {
+    const newTask = `
+      <li>${task.name}</li>
+    </div>`;
+
+    return $(newTask);
+  };
+  
+  // // renders the tasks in reverse-chronological order
+  const renderTasks = function(tasks) {
+    const $taskList = $("<div class='cards'></div>");
+    const $towatch = $("#to-watch");
+    const $toread = $("#to-read");
+    const $tobuy = $("#to-buy");
+    const $toeat = $("#to-eat");
+    $taskList.empty();
+    $towatch.empty();
+    $toread.empty();
+    $tobuy.empty();
+    $toeat.empty();
+
+    
+    for (const task of tasks) {
+      if (task.category_name === "to-watch") {
+        $towatch.append(createTaskElement(task));
+      }
+      if (task.category_name === "to-read") {
+        $toread.append(createTaskElement(task));
+      }
+      if (task.category_name === "to-buy") {
+        $tobuy.append(createTaskElement(task));
+      }
+      if (task.category_name === "to-eat") {
+        $toeat.append(createTaskElement(task));
+      }
+    }
+  };
+
   // using ajax to load the tasks
   const loadTasks = () => {
     // $.get('/tasks')
@@ -19,47 +58,26 @@ $(() => {
       method: 'GET',
       url: "/tasks",
       success: (data) => {
-        // renderTasks();
-        const result = [];
-        for (const task of data) {
-          result.push(createTaskElement(task));
-          $(`#${task.category_name}`).html(result);
-        }
+        renderTasks(data);
+        // const result = [];
+        // for (const task of data) {
+        //   result.push(`<li>${task.name}</li>`);
+        //   $(`#${task.category_name}`).html(result);
+        // }
       },
     });
   };
   loadTasks();
 
-  // // renders the tasks in reverse-chronological order
-  const renderTasks = function (tasks) {
-    const $taskList = $(".category-card");
-    // $taskList.empty();
-    
-    for (const task of tasks) {
-      $taskList.append(createTaskElement(task));
-    }
-  };
-
-  // reating the list article element
-  const createTaskElement = (task) => {
-    const $body = $(`<body></body>`);
-    const newTask = `
-    <div class="category-card">
-      <h5>${task.category_name}</h5>
-      <ul id="${task.category_name}">
-      <li>${task.name}</li>
-      </ul>
-    </div>`;
-
-    return $(newTask).appendTo($body);
-  };
-
-  const $newTextBox = $(".text-box");
+  const $newTextBox = $("#textbox");
 
   // event listener for submit
-  $newTextBox.on("click", function(event) {
+  $('.taskbutton').on("click", function(event) {
     event.preventDefault();
-    const data = $(this).text();
+    console.log($newTextBox.val());
+    const data = {name: $newTextBox.val()};
+    // add category_name to data object & have api use the data.category_name
+    // const data = $(this).val();
     // posting the new task
     $.ajax({
       method: "POST",
@@ -68,7 +86,7 @@ $(() => {
 
       success: function(result) {
         loadTasks();
-        $("#text-box").val("");
+        $("#textbox").val("");
       },
       error: function (err) {
         console.log("error:", err);
