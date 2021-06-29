@@ -18,12 +18,10 @@ $primary-color: #1655b4;
 
 .add-task {
   float: right;
-  width: 230px;
+  width: 220px;
   height: 60px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: space-between;
+  flex-direction: column;
   
   margin-top: 2%;
   margin-right: 5%;
@@ -32,15 +30,16 @@ $primary-color: #1655b4;
 
   textarea {
     resize: none;
-    width: 55%;
-    height: 18px;
+    width: 50%;
+    height: 20px;
     border: 0px;
     font-family: $font-stack;
-    font-size: 1em;
+    color: #ffffff;
+    font-size: 0.9em;
     font-weight: 400px;
     background-color: inherit;
-    margin-left: 10%;
-    margin-top: 10%;
+    margin-left: 15%;
+    margin-top: -2%;
   }
 
 
@@ -50,7 +49,7 @@ $primary-color: #1655b4;
   }
 
   button {
-    margin-top: 0%;
+    margin-top: 10%;
     background-color: inherit;
     border: 0px;
     margin-left: 1%;
@@ -58,8 +57,7 @@ $primary-color: #1655b4;
     font-weight: 500;
     font-size: 1.1em;
     width: 50px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
 
     i {
       margin-right: 5%;
