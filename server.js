@@ -5,11 +5,6 @@ require('dotenv').config();
 const PORT       = process.env.PORT || 8080;
 const ENV        = process.env.ENV || "development";
 const express    = require("express");
-<<<<<<< HEAD
-
-=======
-const bodyParser = require("body-parser");
->>>>>>> 2c9e9de4f360928f74f1e4a75a73c3b39ec546c2
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
@@ -34,11 +29,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-<<<<<<< HEAD
 app.use(express.urlencoded({extended: false}))
-=======
-app.use(bodyParser.urlencoded({ extended: false }))
->>>>>>> 2c9e9de4f360928f74f1e4a75a73c3b39ec546c2
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
