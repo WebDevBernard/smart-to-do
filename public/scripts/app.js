@@ -32,16 +32,18 @@ $(() => {
   });
 
 
-  // // creating the list article element
+  // creating the list article element
   const createTaskElement = (task) {
     const $task = $(`
     <div class="category-card">
-      <h5>${task.category_name}</h5>
-      <ul>
-      <li>${task.name}</li>
-      </ul>
     </div>
     `);
+    const $catName = $(`<h5>${task.category_name}</h5>`).appendTo($task);
+    const $taskList = $(`<ul></ul>`).appendTo($task);
+    const $taskName = $(`<li>${task.name}</li>`).appendTo($taskList);
+    const deleteIcon = `<i class="far fa-trash-alt"></i>`;
+    const $icon = $(`<div class="icons">${deleteIcon}</div>`).appendTo($taskName);
+    ;
   };
 
   // // renders the timeline in reverse-chronological order
@@ -51,15 +53,15 @@ $(() => {
     //     createTaskElement(task).appendTo('.category-card');
     //   });
 
-    const $taskList = $('.category-card');
-    $taskList.empty();
+    const $tasksList = $('.category-card');
+    $tasksList.empty();
 
     for (const task of tasks) {
-      $taskList.append(createTaskElement(task));
+      $tasksList.append(createTaskElement(task));
     }
   }
 
-  // // using ajax to load the tasks
+  // using ajax to load the tasks
   const loadTasks = () => {
     // $.ajax({
     //   method: 'GET',
@@ -96,20 +98,19 @@ $(() => {
     });
   };
 
-  // event listener for submit
+  // event listener for submitting a new task
   $('.task-button').on("click", function(event) {
     event.preventDefault();
-    // console.log($('#text-box').val())
-// console.log($('#task-text-1').val())
-//  console.log($('#text-box').val().replace("text=", "").serialize());
-    let data = { data :$('#text-box').val().replace("text=", "")};
-    // console.log(data)
-    postTasks(data);
 
+    let data = { data :$('#text-box').val().replace("text=", "") };
+
+    postTasks(data);
 
     // clears task area
     $("#task-text-1").val('');
-  })
+  });
+
+  // delete button
 
   module.exports = { loadTasks };
 });
