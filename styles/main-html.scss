@@ -8,9 +8,9 @@ $primary-color: #1655b4;
 .container {
   background-color: #EEF4FF;
   display: inline-block;
-  // flex-direction: column;
-  // justify-content: flex-start;
-  // align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 92%;
   height: inherit;
 
@@ -18,10 +18,12 @@ $primary-color: #1655b4;
 
 .add-task {
   float: right;
-  width: 220px;
+  width: 230px;
   height: 60px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: space-between;
   
   margin-top: 2%;
   margin-right: 5%;
@@ -30,16 +32,15 @@ $primary-color: #1655b4;
 
   textarea {
     resize: none;
-    width: 50%;
-    height: 20px;
+    width: 55%;
+    height: 18px;
     border: 0px;
     font-family: $font-stack;
-    color: #ffffff;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 400px;
     background-color: inherit;
-    margin-left: 15%;
-    margin-top: -2%;
+    margin-left: 10%;
+    margin-top: 10%;
   }
 
 
@@ -49,7 +50,7 @@ $primary-color: #1655b4;
   }
 
   button {
-    margin-top: 10%;
+    margin-top: 0%;
     background-color: inherit;
     border: 0px;
     margin-left: 1%;
@@ -57,7 +58,8 @@ $primary-color: #1655b4;
     font-weight: 500;
     font-size: 1.1em;
     width: 50px;
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 
     i {
       margin-right: 5%;
