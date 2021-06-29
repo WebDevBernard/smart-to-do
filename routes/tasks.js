@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const tasksQueries = require('../db/product-queries.js') //will need to change the name later 
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
@@ -14,68 +15,41 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  router.get('/:id', (req, res) => {
-    const userId = req.params.id;
-    db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
-      .then(data => {
-        const response = data.rows;
-        res.json(response);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+
+  //GET /display tasks 
+  router.get('/', (req, res) => {
+    tasksQueries.getTasks() 
+      .then((tasks)=> {
+        res.json(tasks);
       });
-    const templateVars =
-    res.render('index', templateVars)
   });
 
+  //POST / new tasks
   router.post('/', (req, res) => {
-    const userTask = req.body.data;
-    const userId = 1;
-    console.log("usertask:", userTask)
-    console.log("userid:", userId)
-    // console.log(req)
-    // console.log(res)
-    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
-      .then(data => {
-        console.log(data)
-        const response = data.rows;
-        res.json(response);
-      })
-      .catch(err => {
-        console.log(err)
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-
+    const {task_name} = req.body.data;
+    tasksQueries.createTasks(task_name)
+    .then(() => {
+      res.json({ success: true });
+    })
   });
-
+  
+  //PUT / update a task
   router.put('/:id', (req, res) => {
-    const userTask = req.body;
-    const userId = req.params.id;
-    db.query(`UPDATE tasks
-    SET name = 'Joe',
-    user_id = 1,
-    category_name = 'to-watch',
-    date_created = 'NOW()'
-    WHERE id = 1 AND user_id = 1
-    RETURNING *;`)
-      .then(data => {
-        const response = data.rows;
-        console.log({ response });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+    const { task_name } = req.body;
+    tasksQueries.updateTasks(req.params.id)
+    .then(() => {
+      res.json( { success: true });
+    });
+  })
+  
+  //Delete / delete a task
   router.delete('/', (req, res) => {
-    db.query(`DELETE FROM tasks WHERE user_id = $1 AND id = $2;`, [1, 3]);
-    res.json("Your Task Has Been Deleted");
-  });
+    tasksQueries.deleteTask(req.params.id)
+    .then(() => {
+      res.json( { sucess: true });
+    });
+    
+  })
   return router;
 };
 
