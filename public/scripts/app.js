@@ -44,7 +44,7 @@ $(() => {
 
   // // renders the tasks in reverse-chronological order
   const renderTasks = function (tasks) {
-    const $taskList = $("#category-card");
+    const $taskList = $(".category-card");
     $taskList.empty();
     for (const task of tasks) {
       $taskList.append(createTaskElement(task));

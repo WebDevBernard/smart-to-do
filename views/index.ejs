@@ -30,7 +30,6 @@
   <!-- sidebar w/ profile icon -->
   <div class="sidebar">
     <aside>
-      <!-- <button class="open"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></button> -->
       <button id="myBtn"><img src="https://i.ibb.co/55wr5sW/profile-icon.png" alt="profile-icon"></button>
     </aside>
   </div>
@@ -72,27 +71,12 @@
     <div class="cards">
 
       <!-- this is the to watch card -->
-      <section class="category-card">
+      <div class="category-card">
         <h5>things to watch</h5>
         <ul id="to-watch">
-          <!-- <script>
-            $(document).ready(() => {
-              $.ajax({
-                method: 'GET',
-                url: "/tasks",
-                success: (data) => {
-                  const result = [];
-                  for (const task of data) {
-                    result.push(`<li>${task.name}</li>`);
-                    $("#towatch").html(result);
-                  }
-                },
-              });
-            })
-          </script> -->
         </ul>
 
-      </section>
+      </div>
       <!-- this is the to eat card -->
       <div class="category-card">
         <h5>places to eat at</h5>
@@ -103,9 +87,6 @@
           <li>osterio savio volpe</li>
           <li>osterio savio volpe</li>
         </ul>
-
-        <!-- this will eventually be a section like this:
-          <section class="to-eat-list"></section> -->
       </div>
 
       <!-- this is the to read card -->
@@ -115,8 +96,6 @@
           <li>the name of the wind</li>
           <li>mistborn</li>
         </ul>
-        <!-- this will eventually be a section like this:
-          <section class="to-read-list"></section> -->
       </div>
 
       <!-- this is the to buy card -->
@@ -126,8 +105,6 @@
           <li>shampoo</li>
           <li>potatoes</li>
         </ul>
-        <!-- this will eventually be a section like this:
-          <section class="to-buy-list"></section> -->
       </div>
 
     </div>
@@ -136,28 +113,5 @@
   </main>
   <script src="./scripts/modal.js"></script>
 </body>
-  <!-- <script>$(window).ready(function() {
-    $(".task-button").click(function() {
-      // console.log(window.getElementById("task-text-1"))
-      console.log($('#text-box').val())        });              });
-</script> -->
-
-      <!-- <script>  $(() => {
-            $('.task-button').on("click", function(event) {
-              // event.preventDefault();
-              console.log(document.getElementById("task-text-1").value)
-              console.log($('#task-text-1').val())
-
-              let data = $("#task-text-1").serialize().replace("text=", "");
-              console.log(data)
-              // postTweet(data);
-
-
-              // clears task area
-              $("#task-text-1").val('');
-            })
-          });
-
-</script> -->
 
 </html>
