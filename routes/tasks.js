@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
   router.get('/', (req, res) => {
     db.query(`SELECT * FROM tasks`)
-      .then(data => {
+      .then (data => {
         const response = data.rows;
         res.json(response);
       })
@@ -15,39 +15,24 @@ module.exports = (db) => {
       });
   });
   router.get('/:id', (req, res) => {
-    const userId = req.params.id;
+    const userId = parseInt(req.params.id);
     db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
       .then(data => {
         const response = data.rows;
-        res.json(response);
+        res.json( {response} );
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
-    const templateVars =
-    res.render('index', templateVars)
   });
 
   router.post('/', (req, res) => {
-    const userTask = req.body.data;
-    const userId = 1;
-    console.log("usertask:", userTask)
-    console.log("userid:", userId)
-    // console.log(req)
-    // console.log(res)
-    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [userId, userTask, "to-watch", "Now()"])
+    const  { name }  = req.body;
+    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, name, "to-watch", "Now()"])
       .then(data => {
-        console.log(data)
-        const response = data.rows;
-        res.json(response);
-      })
-      .catch(err => {
-        console.log(err)
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.json({ success: true });
       });
 
   });
