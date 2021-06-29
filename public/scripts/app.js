@@ -2,20 +2,19 @@ $(() => {
   // creating the list article element
   const createTaskElement = (task) => {
     const newTask = `
-      <li>${task.name}</li>
-    </div>`;
+      <li>${task.name}</li>`;
 
     return $(newTask);
   };
   
   // // renders the tasks in reverse-chronological order
   const renderTasks = function(tasks) {
-    const $taskList = $("<div class='cards'></div>");
-    const $towatch = $("#to-watch");
-    const $toread = $("#to-read");
-    const $tobuy = $("#to-buy");
-    const $toeat = $("#to-eat");
-    $taskList.empty();
+    // const $taskList = $("<div class='cards'></div>");
+    const $towatch = $("#towatch");
+    const $toread = $("#toread");
+    const $tobuy = $("#tobuy");
+    const $toeat = $("#toeat");
+    // $taskList.empty();
     $towatch.empty();
     $toread.empty();
     $tobuy.empty();

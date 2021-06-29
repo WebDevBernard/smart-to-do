@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const sortable = require('../scripts/sortable.js');
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
@@ -30,7 +31,7 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
     const name = req.body.name;
-    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, name, categorizeFunction(name), "Now()"])
+    db.query(`INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`, [1, name, "to-watch", "Now()"])
       .then(data => {
         res.json({ data });
       });
@@ -58,8 +59,13 @@ module.exports = (db) => {
       });
   });
   router.delete('/', (req, res) => {
-    db.query(`DELETE FROM tasks WHERE user_id = $1 AND id = $2;`, [1, 3]);
-    res.json("Your Task Has Been Deleted");
+    if (sortable.removeOnSpill) {
+      db.query(`DELETE FROM tasks WHERE user_id = $1 AND id = $2;`, [1, 3]);
+      res.json("Your Task Has Been Deleted");
+    } else {
+      return;
+    }
+    
   });
   return router;
 };
