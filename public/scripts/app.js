@@ -19,9 +19,10 @@ $(() => {
       method: 'GET',
       url: "/tasks",
       success: (data) => {
+        // renderTasks();
         const result = [];
         for (const task of data) {
-          result.push(`<li>${task.name}</li>`);
+          result.push(createTaskElement(task));
           $(`#${task.category_name}`).html(result);
         }
       },
@@ -29,41 +30,43 @@ $(() => {
   };
   loadTasks();
 
-  // reating the list article element
-  const createTaskElement = (task) => {
-    const newTask = `
-    <div class="category-card">
-      <h5>${task.category_name}</h5>
-      <ul>
-      <li>${task.name}</li>
-      </ul>
-    </div>`;
-
-    return $(newTask);
-  };
-
   // // renders the tasks in reverse-chronological order
   const renderTasks = function (tasks) {
     const $taskList = $(".category-card");
-    $taskList.empty();
+    // $taskList.empty();
+    
     for (const task of tasks) {
       $taskList.append(createTaskElement(task));
     }
   };
 
+  // reating the list article element
+  const createTaskElement = (task) => {
+    const $body = $(`<body></body>`);
+    const newTask = `
+    <div class="category-card">
+      <h5>${task.category_name}</h5>
+      <ul id="${task.category_name}">
+      <li>${task.name}</li>
+      </ul>
+    </div>`;
+
+    return $(newTask).appendTo($body);
+  };
+
   const $newTextBox = $(".text-box");
 
   // event listener for submit
-  $newTextBox.on("click", function (event) {
+  $newTextBox.on("click", function(event) {
     event.preventDefault();
-    const data = $(this).serialize();
+    const data = $(this).text();
     // posting the new task
     $.ajax({
-      url: "/tasks",
       method: "POST",
+      url: "/tasks",
       data: data,
 
-      success: function (result) {
+      success: function(result) {
         loadTasks();
         $("#text-box").val("");
       },
