@@ -1,4 +1,5 @@
-  Sortable.create(towatch, {
+$(document).ready(function() {
+Sortable.create(towatch, {
     group: 'shared',
     animation: 150,
     removeOnSpill: true
@@ -17,4 +18,4 @@
     animation: 150,
     removeOnSpill : true
   });
-
+});

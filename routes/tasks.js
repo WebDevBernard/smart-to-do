@@ -6,7 +6,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM tasks`)
       .then(data => {
         const response = data.rows;
-        res.json( response );
+        res.json(response);
       })
       .catch(err => {
         res
