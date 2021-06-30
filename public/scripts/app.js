@@ -12,7 +12,7 @@ $(() => {
 
     return $newTask;
   };
-
+  console.log("this is before the function renderTasks");
   // // renders the tasks in reverse-chronological order
   const renderTasks = function (tasks) {
     // const $taskList = $("<div class='cards'></div>");
@@ -26,7 +26,10 @@ $(() => {
     $tobuy.empty();
     $toeat.empty();
 
+
+    //console.log("CAN YOU SEE ME?");
     for (const task of tasks) {
+      //console.log("HALO");
       if (task.category_name === "to-watch") {
         $towatch.append(createTaskElement(task));
       }
@@ -40,7 +43,7 @@ $(() => {
         $toeat.append(createTaskElement(task));
       }
     }
-  };
+};
 
   // using ajax to load the tasks
   const loadTasks = () => {
