@@ -42,12 +42,15 @@ body {
     padding-left: 10%;
     margin-top: -2%;
     list-style-type: none;
+    // display: flex;
+    // flex-direction: column;
   }
 
   ul li {
     position: relative;
     padding-left: 24px;
     padding-bottom: 10px;
+
   }
 
   ul li:before {
