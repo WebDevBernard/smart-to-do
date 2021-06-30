@@ -1,58 +1,70 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const tasksQueries = require('../db/product-queries.js') //will need to change the name later 
+// const sortable = require('../scripts/sortable.js');
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
+  router.get("/", (req, res) => {
     db.query(`SELECT * FROM tasks`)
-      .then(data => {
+      .then((data) => {
         const response = data.rows;
-        res.json( response );
+        res.json(response);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  router.get("/:id", (req, res) => {
+    const userId = parseInt(req.params.id);
+    db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
+      .then((data) => {
+        const response = data.rows;
+        res.json({ response });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
 
-  //GET /display tasks 
-  router.get('/', (req, res) => {
-    tasksQueries.getTasks() 
-      .then((tasks)=> {
-        res.json(tasks);
+  router.post("/", (req, res) => {
+    const name = req.body.name;
+    db.query(
+      `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+      [1, name, "to-watch", "Now()"]
+    ).then((data) => {
+      res.json({ data });
+    });
+  });
+
+  router.put("/:id", (req, res) => {
+    const userTask = req.body;
+    const userId = req.params.id;
+    db.query(
+      `UPDATE tasks
+    SET name = 'Joe',
+    user_id = 1,
+    category_name = 'to-watch',
+    date_created = 'NOW()'
+    WHERE id = 1 AND user_id = 1
+    RETURNING *;`
+    )
+      .then((data) => {
+        const response = data.rows;
+        console.log({ response });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
 
-  //POST / new tasks
-  router.post('/', (req, res) => {
-    const {task_name} = req.body.data;
-    tasksQueries.createTasks(task_name)
-    .then(() => {
-      res.json({ success: true });
-    })
+
+  console.log("this is outside the delete route");
+
+  router.delete(`/:id`, (req, res) => {
+    const taskId = parseInt(req.params.id);
+    console.log("this is inside the delete route");
+    db.query(`DELETE FROM tasks WHERE id = $1;`, [taskId]
+    );
+    res.json("Your Task Has Been Deleted");
   });
-  
-  //PUT / update a task
-  router.put('/:id', (req, res) => {
-    const { task_name } = req.body;
-    tasksQueries.updateTasks(req.params.id)
-    .then(() => {
-      res.json( { success: true });
-    });
-  })
-  
-  //Delete / delete a task
-  router.delete('/', (req, res) => {
-    tasksQueries.deleteTask(req.params.id)
-    .then(() => {
-      res.json( { sucess: true });
-    });
-    
-  })
   return router;
 };
-
-
-
-
