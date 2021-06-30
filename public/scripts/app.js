@@ -21,11 +21,13 @@ $(() => {
     const $toread = $("#toread");
     const $tobuy = $("#tobuy");
     const $toeat = $("#toeat");
+    const $todo = $("#todo");
     // $taskList.empty();
     $towatch.empty();
     $toread.empty();
     $tobuy.empty();
     $toeat.empty();
+    $todo.empty();
 
     for (const task of tasks) {
       if (task.category_name === "to-watch") {
@@ -39,6 +41,9 @@ $(() => {
       }
       if (task.category_name === "to-eat") {
         $toeat.append(createTaskElement(task));
+      }
+      if (task.category_name === "to-do") {
+        $todo.append(createTaskElement(task));
       }
     }
   };

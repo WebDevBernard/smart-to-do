@@ -14,7 +14,7 @@ $primary-color: #1655b4;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: space-between;
+  align-items: space-around;
 }
   
 .category-card {
@@ -28,6 +28,24 @@ $primary-color: #1655b4;
 }
   
 .category-card:hover {
+  box-shadow: 8px 8px 8px #c4dcff;
+  transition:all .3s linear;    
+  -webkit-transition:all .3s linear;
+  -o-transition:all .3s linear;
+  -moz-transition:all .3s linear;
+}
+
+.category-card-to-do {
+  width: 75%;
+  margin-bottom: 3%;
+  height: 250px;
+  background: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+  
+.category-card-to-do:hover {
   box-shadow: 8px 8px 8px #c4dcff;
   transition:all .3s linear;    
   -webkit-transition:all .3s linear;
