@@ -7,9 +7,10 @@
 
 const express = require('express');
 const router = express.Router();
+const userQueries = require('../db/user-queries');
 
 
-module.exports = (db) => {
+// module.exports = (db) => {
   //   //login
   //   router.post("/login", (req, res) => {
   //     let loginCheck = false;
@@ -22,18 +23,27 @@ module.exports = (db) => {
   //   }
   // }
 
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+// GET/ user by id 
+  router.get('/:id', (req, res) => {
+   userQueries.getUserById(req.params.id) 
+    .then((user) => {
+      res.render('user', {user}); //not sure about this rendering atm
+    })
+  })
+
+
+  // router.get("/", (req, res) => {
+  //   db.query(`SELECT * FROM users;`)
+  //     .then(data => {
+  //       const users = data.rows; 
+  //       res.json({ users });
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
 
   // login route
   router.get('/login/:id', (req, res) => {
@@ -47,7 +57,7 @@ module.exports = (db) => {
       user: req.params.id,
     };
 
-    res.render("edit", templateVars);
+    res.render("edit", templateVars)
     return;
   });
 
