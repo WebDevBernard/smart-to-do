@@ -128,7 +128,7 @@ body {
     background-color: #69A4FE;
     border: none;
     margin-top: 1%;
-    padding: 1%;
+    padding: 2%;
     color: #ffffff;
   }
 
@@ -145,18 +145,16 @@ body {
     right:0;
     top: 0;
     bottom: 0;
-    // padding:124px 48px 124px 107px;
     width: 5%;
     background-color:#69A4FE;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 
     img {
       height: 50px;
       width: 50px;
-      margin-left: -25%;
     }
     
     button {
@@ -164,6 +162,7 @@ body {
       border: none;
       margin: auto;
       margin-top: 50%;
+      margin-right: 50%;
     }
   }
 }

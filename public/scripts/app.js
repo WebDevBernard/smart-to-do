@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(() => {
   // creating the list article element
   const createTaskElement = (task) => {

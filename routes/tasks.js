@@ -56,12 +56,8 @@ module.exports = (db) => {
       });
   });
 
-
-  console.log("this is outside the delete route");
-
   router.delete(`/:id`, (req, res) => {
     const taskId = parseInt(req.params.id);
-    console.log("this is inside the delete route");
     db.query(`DELETE FROM tasks WHERE id = $1;`, [taskId]
     );
     res.json("Your Task Has Been Deleted");
