@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { movieCat } = require("./api");
 const { getBooks } = require("./api");
+const { foodCat } = require("./api");
+const { getWolf } = require("./api");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM tasks`)
@@ -55,34 +57,58 @@ module.exports = (db) => {
         res.json({ data });
       });
     } else {
-      movieCat(name).then((isMovie) => {
-        if (isMovie) {
+      getWolf(name).then((isBuy) => {
+        if (isBuy) {
           db.query(
             `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-            [1, name, "to-watch", "Now()"]
+            [1, name, "to-buy", "Now()"]
           ).then((data) => {
             res.status(200);
             res.json({ data });
           });
         } else {
-          getBooks(name).then((isBook) => {
-            if (isBook) {
+          foodCat(name).then((isFood) => {
+            if (isFood) {
               db.query(
                 `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-                [1, name, "to-read", "Now()"]
+                [1, name, "to-eat", "Now()"]
               ).then((data) => {
                 res.status(200);
                 res.json({ data });
               });
             } else {
-              res.status(400);
-              res.json("todo: write proper error msg")
+          movieCat(name).then((isMovie) => {
+            if (isMovie) {
+              db.query(
+                `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+                [1, name, "to-watch", "Now()"]
+              ).then((data) => {
+                res.status(200);
+                res.json({ data });
+              });
+            } else {
+              getBooks(name).then((isBook) => {
+                if (isBook) {
+                  db.query(
+                    `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+                    [1, name, "to-read", "Now()"]
+                  ).then((data) => {
+                    res.status(200);
+                    res.json({ data });
+                  });
+                } else {
+                  res.status(400);
+                  res.json("todo: write proper error msg");
+                }
+              });
             }
-          })
+          });
         }
-      })
+      });
     }
   });
+}
+});
   // router.put("/:id", (req, res) => {
   //   const userTask = req.body;
   //   const userId = req.params.id;
