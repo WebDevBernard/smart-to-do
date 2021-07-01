@@ -2,7 +2,7 @@
 const axios = require("axios");
 require('dotenv').config();
 
-// omdb api call
+// omdb api (to watch) call
 const movieCat = function (queryText) {
   const oKey = process.env.OMDB_KEY;
   return axios
@@ -14,9 +14,10 @@ const movieCat = function (queryText) {
     });
 };
 
-// yelp api call
+// yelp api (to eat) call
 
-// google books api call
+// google books api (to read) call
 
+// amazon api (to buy) call
 
 module.exports = { movieCat };

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const { movieCat } = require("./api");
 
 module.exports = (db) => {
@@ -28,30 +27,30 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     const name = req.body.name;
-    console.log(name, "this is the name of the input");
+    console.log(name, "is the name of the input");
 
-    if (name.includes(`watch` + `\xa0`)) {
+    if (name.includes(`watch`)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-watch", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`read` + `\xa0`)) {
+    } else if (name.includes(`read`)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-read", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`eat` + `\xa0`)) {
+    } else if (name.includes(`eat`)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-eat", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`buy` + `\xa0`)) {
+    } else if (name.includes(`buy`)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-buy", "Now()"]
@@ -94,7 +93,6 @@ module.exports = (db) => {
 
   router.delete(`/:id`, (req, res) => {
     const taskId = parseInt(req.params.id);
-    console.log("this is inside the delete route");
     db.query(`DELETE FROM tasks WHERE id = $1;`, [taskId]);
     res.json("Your Task Has Been Deleted");
   });
