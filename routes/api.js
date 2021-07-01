@@ -5,11 +5,11 @@ require("dotenv").config();
 // omdb api (to watch) call
 const movieCat = function(queryText) {
   const url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_KEY}&t=${queryText}`;
-  
+
   return axios
     .get(url)
     .then((response) => {
-      if (response.data["imdbID"]) {
+      if ((response.data["imdbID"])) {
         return response.data["imdbID"];
       }
       return false;
@@ -22,16 +22,16 @@ const movieCat = function(queryText) {
 // yelp api (to eat) call
 
 // google books api (to read) call
+
 const getBooks = function(queryText) {
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${queryText}&key=${process.env.BOOKS_KEY}`;
   return axios
-    .get(
-      `https://www.googleapis.com/books/v1/volumes?q=${queryText}&key=${process.env.BOOKS_KEY}`
-    )
+    .get(url)
     .then((response) => {
       if (response.data.items[0]["volumeInfo"]["industryIdentifiers"][0]["identifier"]) {
         return response.data.items[0]["volumeInfo"]["industryIdentifiers"][0]["identifier"];
       }
-      return;
+      return false;
     })
     .catch((error) => {
       console.log(error);

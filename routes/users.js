@@ -23,9 +23,9 @@
 //   //   }
 //   // }
 
-// // GET/ user by id 
+// // GET/ user by id
 //   router.get('/:id', (req, res) => {
-//    userQueries.getUserById(req.params.id) 
+//    userQueries.getUserById(req.params.id)
 //     .then((user) => {
 //       res.render('user', {user}); //not sure about this rendering atm
 //     })
@@ -35,7 +35,7 @@
 //   // router.get("/", (req, res) => {
 //   //   db.query(`SELECT * FROM users;`)
 //   //     .then(data => {
-//   //       const users = data.rows; 
+//   //       const users = data.rows;
 //   //       res.json({ users });
 //   //     })
 //   //     .catch(err => {

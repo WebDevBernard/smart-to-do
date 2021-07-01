@@ -69,7 +69,6 @@ module.exports = (db) => {
       }
 
       if (getBooks(name)) {
-        console.log("ROHIT GET BOOKS NAME");
         db.query(
           `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
           [1, name, "to-read", "Now()"]
