@@ -67,8 +67,7 @@ $(() => {
     event.preventDefault();
     console.log($newTextBox.val());
     const data = { name: $newTextBox.val() };
-    // add category_name to data object & have api use the data.category_name
-    // const data = $(this).val();
+
     // posting the new task
     $.ajax({
       method: "POST",
