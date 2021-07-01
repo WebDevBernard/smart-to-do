@@ -15,7 +15,7 @@ $(() => {
   };
 
   // // renders the tasks in reverse-chronological order
-  const renderTasks = function (tasks) {
+  const renderTasks = function(tasks) {
     // const $taskList = $("<div class='cards'></div>");
     const $towatch = $("#towatch");
     const $toread = $("#toread");
@@ -63,7 +63,7 @@ $(() => {
   const $newTextBox = $("#textbox");
 
   // event listener for submit
-  $(".taskbutton").on("click", function (event) {
+  $(".taskbutton").on("click", function(event) {
     event.preventDefault();
     console.log($newTextBox.val());
     const data = { name: $newTextBox.val() };
@@ -75,18 +75,18 @@ $(() => {
       url: "/tasks",
       data: data,
 
-      success: function (result) {
+      success: function() {
         loadTasks();
         $("#textbox").val("");
       },
-      error: function (err) {
+      error: function(err) {
         console.log("error:", err);
       },
     });
   });
 
   // event listener for delete
-  $(".cards").on("click", ".deletetask", function (event) {
+  $(".cards").on("click", ".deletetask", function(event) {
     event.preventDefault();
     const data = loadTasks();
 
@@ -95,10 +95,10 @@ $(() => {
       url: `tasks/${$(this).attr("taskid")}`,
       data: data,
 
-      success: function (result) {
+      success: function() {
         loadTasks();
       },
-      error: function (err) {
+      error: function(err) {
         console.log("error:", err);
       },
     });

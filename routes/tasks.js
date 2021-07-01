@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { movieCat } = require("./api");
+const { getBooks } = require("./api");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -10,7 +11,7 @@ module.exports = (db) => {
         res.json(response);
       })
       .catch((err) => {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err });
       });
   });
   router.get("/:id", (req, res) => {
@@ -27,7 +28,6 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     const name = req.body.name;
-    console.log(name, "is the name of the input");
 
     if (name.includes(`watch`)) {
       db.query(
@@ -58,13 +58,23 @@ module.exports = (db) => {
         res.json({ data });
       });
     } else {
+      console.log("this is inside the else statement");
       if (movieCat(name)) {
-        console.log("this is inside the movieCat call");
         db.query(
           `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
           [1, name, "to-watch", "Now()"]
         ).then((data) => {
           res.json({ data });
+        });
+      }
+
+      if (getBooks(name)) {
+        console.log("ROHIT GET BOOKS NAME");
+        db.query(
+          `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+          [1, name, "to-read", "Now()"]
+        ).then(() => {
+          res.status(200);
         });
       }
     }
