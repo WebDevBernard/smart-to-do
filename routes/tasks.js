@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getMovies } = require("./api");
-const { getBooks } = require("./api");
+const { movieCat, getBooks, foodCat } = require("./api");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -58,49 +57,45 @@ module.exports = (db) => {
         res.json({ data });
       });
     } else {
-      getMovies(name).then((isMovie) => {
-        // console.log("this is the name inside getMovies promise", name);
-        if (isMovie) {
+      foodCat(name).then((isFood) => {
+        if (isFood) {
           db.query(
             `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-            [1, name, "to-watch", "Now()"]
+            [1, name, "to-eat", "Now()"]
           ).then((data) => {
             res.status(200);
             res.json({ data });
           });
         } else {
-          getBooks(name).then((isBook) => {
-            if (isBook) {
+          movieCat(name).then((isMovie) => {
+            if (isMovie) {
               db.query(
                 `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-                [1, name, "to-read", "Now()"]
+                [1, name, "to-watch", "Now()"]
               ).then((data) => {
                 res.status(200);
                 res.json({ data });
               });
             } else {
-              res.status(400);
-              res.json("todo: write proper error msg");
+              getBooks(name).then((isBook) => {
+                if (isBook) {
+                  db.query(
+                    `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+                    [1, name, "to-read", "Now()"]
+                  ).then((data) => {
+                    res.status(200);
+                    res.json({ data });
+                  });
+                } else {
+                  res.status(400);
+                  res.json("todo: write proper error msg");
+                }
+              });
             }
           });
         }
       });
     }
-
-    // else if (
-    //   !name.includes("buy") &&
-    //   !name.includes("eat") &&
-    //   !name.includes("read") &&
-    //   !name.includes("watch")
-    // ) {
-    //   db.query(
-    //     `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-    //     [1, name, "to-do", "Now()"]
-    //   ).then((data) => {
-    //     res.json({ data });
-    //   });
-    // }
-
   });
 
   router.delete(`/:id`, (req, res) => {

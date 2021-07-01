@@ -3,7 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 // omdb api (to watch) call
-const getMovies = async function (queryText) {
+const movieCat = async function (queryText) {
   const url = `http://www.omdbapi.com/?apikey=${process.env.OMDB_KEY}&t=${queryText}`;
   let res = await axios
     .get(url)
@@ -20,6 +20,26 @@ const getMovies = async function (queryText) {
 };
 
 // yelp api (to eat) call
+const foodCat = async function(queryText) {
+
+  let res = await axios
+    .get(`https://api.yelp.com/v3/businesses/search?term=${queryText}&location=Vancouver`, {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_KEY}`
+      },
+    })
+    .then(response => {
+      console.log("!!!!!!!$$$$$$$$$$$$$:", response["data"]["businesses"][0]["name"]);
+      if (response["data"]["businesses"][0]["name"].toLowerCase().includes(queryText)) {
+        return true;
+      }
+      return false;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  return res;
+};
 
 // google books api (to read) call
 const getBooks = async function (queryText) {
@@ -42,4 +62,6 @@ const getBooks = async function (queryText) {
   return res;
 };
 
-module.exports = { getMovies, getBooks };
+// api (to buy) call
+
+module.exports = { movieCat, getBooks, foodCat };
