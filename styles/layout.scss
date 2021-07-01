@@ -1,7 +1,9 @@
 // See: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 $font-stack: 'Inter', sans-serif;
+$title-font:'Shrikhand', cursive;
 $primary-color: #1655b4;
 
 // global styles
@@ -30,6 +32,22 @@ body {
     color: #244751;
     font-size: 1.2em;
     margin-left: 7%;
+  }
+
+  #title {
+    display: inline-block;
+    color: #69A4FE;
+    font-size: 2em;
+    font-family: $title-font;
+    margin-top: 3%;
+    z-index: none;
+  }
+
+  #title:hover {
+    -webkit-text-stroke: 1px black;
+    -o-transition: all .3s linear;
+    -moz-transition: all .3s linear; 
+    text-shadow: -2px 2px 0 #1655b4, -3px 3px 0 #69A4FE;
   }
 
   .edit {
