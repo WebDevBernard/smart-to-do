@@ -85,6 +85,26 @@ $(() => {
     });
   });
 
+  // testing if enter key works
+  $('#textbox').keydown(function(event) {
+    // enter has keyCode = 13, change it if you want to use another button
+    if (event.keyCode === 13) {
+      $.ajax({
+        method: "POST",
+        url: "/tasks",
+        data: data,
+  
+        success: function() {
+          loadTasks();
+          $("#textbox").val("");
+        },
+        error: function(err) {
+          console.log("error:", err);
+        },
+      });
+    }
+  });
+
   // event listener for delete
   $(".cards").on("click", ".deletetask", function(event) {
     event.preventDefault();

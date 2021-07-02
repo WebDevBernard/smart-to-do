@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { movieCat } = require("./api");
-const { getBooks } = require("./api");
-const { foodCat } = require("./api");
-const { getWolf } = require("./api");
+const { movieCat, getBooks, foodCat, getWolf } = require("./api");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM tasks`)
@@ -28,31 +25,45 @@ module.exports = (db) => {
   });
   router.post("/", (req, res) => {
     const name = req.body.name;
-    if (name.includes(`watch`)) {
+    if (name.match(/\bwatch\b/)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-watch", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`read`)) {
+    } else if (name.match(/\bread\b/)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-read", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`eat`)) {
+    } else if (name.match(/\beat\b/)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-eat", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
-    } else if (name.includes(`buy`)) {
+    } else if (name.match(/\bbuy\b/)) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
         [1, name, "to-buy", "Now()"]
+      ).then((data) => {
+        res.json({ data });
+      });
+    } else if (
+      name.match(/\bdo\b/) ||
+      name.match(/\bgo\b/) ||
+      name.match(/\bwash\b/) ||
+      name.match(/\bemail\b/) ||
+      name.match(/\bcall\b/) ||
+      name.match(/\bremember\b/)
+    ) {
+      db.query(
+        `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+        [1, name, "to-do", "Now()"]
       ).then((data) => {
         res.json({ data });
       });
@@ -77,28 +88,30 @@ module.exports = (db) => {
                 res.json({ data });
               });
             } else {
-          movieCat(name).then((isMovie) => {
-            if (isMovie) {
-              db.query(
-                `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-                [1, name, "to-watch", "Now()"]
-              ).then((data) => {
-                res.status(200);
-                res.json({ data });
-              });
-            } else {
-              getBooks(name).then((isBook) => {
-                if (isBook) {
+              movieCat(name).then((isMovie) => {
+                if (isMovie) {
                   db.query(
                     `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
-                    [1, name, "to-read", "Now()"]
+                    [1, name, "to-watch", "Now()"]
                   ).then((data) => {
                     res.status(200);
                     res.json({ data });
                   });
                 } else {
-                  res.status(400);
-                  res.json("todo: write proper error msg");
+                  getBooks(name).then((isBook) => {
+                    if (isBook) {
+                      db.query(
+                        `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
+                        [1, name, "to-read", "Now()"]
+                      ).then((data) => {
+                        res.status(200);
+                        res.json({ data });
+                      });
+                    } else {
+                      res.status(400);
+                      res.json("todo: write proper error msg");
+                    }
+                  });
                 }
               });
             }
@@ -107,8 +120,6 @@ module.exports = (db) => {
       });
     }
   });
-}
-});
   // router.put("/:id", (req, res) => {
   //   const userTask = req.body;
   //   const userId = req.params.id;

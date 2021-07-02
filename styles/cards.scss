@@ -4,6 +4,15 @@
 $font-stack: 'Inter', sans-serif;
 $primary-color: #1655b4;
 
+#dark-mode-cards {
+  background-color: #244751;
+  color: #fefefe;
+}
+
+#dark-mode-title {
+  color: #fefefe;
+}
+
 .cards {
   width: 75%;
   height: 100%;

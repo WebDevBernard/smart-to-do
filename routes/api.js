@@ -15,7 +15,6 @@ const movieCat = async function(queryText) {
     .catch((error) => {
       console.log(error);
     });
-  console.log(res);
   return res;
 };
 // yelp api (to eat) call
@@ -28,8 +27,7 @@ const foodCat = async function(queryText) {
       },
     })
     .then(response => {
-      console.log("!!!!!!!$$$$$$$$$$$$$:", response["data"]["businesses"][0]["name"]);
-      const shortResponse = response["data"]["businesses"][0]["name"]
+      const shortResponse = response["data"]["businesses"][0]["name"];
       if (shortResponse.toLowerCase().includes(queryText)) {
         return true;
       }
@@ -68,7 +66,7 @@ const getWolf = async function(queryText) {
     .then((response) => {
       // skip if book movie food television newspaper comic
       console.log(response["data"]["queryresult"]["datatypes"]);
-      const newArr = ["book", "", "academyaward,movie", "financial", "fictionalcharacter,person"];
+      const newArr = ["book", "", "academyaward,movie", "financial", "fictionalcharacter,person", "televisionprogram", "quantity"];
       if (newArr.includes(response["data"]["queryresult"]["datatypes"].toLowerCase())) {
         return false;
       }
