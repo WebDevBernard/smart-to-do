@@ -69,7 +69,7 @@ const getWolf = async function (queryText) {
   let res = await axios
     .get(url)
     .then((response) => {
-      // skip if book movie food television newspaper comic
+
       console.log(response["data"]["queryresult"]["datatypes"]);
       const newArr = [
         "book",
@@ -79,6 +79,7 @@ const getWolf = async function (queryText) {
         "fictionalcharacter,person",
         "televisionprogram",
         "quantity",
+        "historicalperiod,word"
       ];
       if (
         newArr.includes(

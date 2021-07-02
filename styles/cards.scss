@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 $font-stack: 'Inter', sans-serif;
-$primary-color: #1655b4;
+$primary-color: #5c7064;
 
 #dark-mode-cards {
   background-color: #244751;
@@ -37,7 +37,7 @@ $primary-color: #1655b4;
 }
   
 .category-card:hover {
-  box-shadow: 8px 8px 8px #c4dcff;
+  box-shadow: 8px 8px 8px #5c7064;
   transition:all .3s linear;    
   -webkit-transition:all .3s linear;
   -o-transition:all .3s linear;
@@ -55,7 +55,7 @@ $primary-color: #1655b4;
 }
   
 .category-card-to-do:hover {
-  box-shadow: 8px 8px 8px #c4dcff;
+  box-shadow: 8px 8px 8px #5c7064;
   transition:all .3s linear;    
   -webkit-transition:all .3s linear;
   -o-transition:all .3s linear;

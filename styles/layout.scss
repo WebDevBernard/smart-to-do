@@ -4,7 +4,7 @@
 
 $font-stack: "Inter", sans-serif;
 $title-font: "Shrikhand", cursive;
-$primary-color: #1655b4;
+$primary-color: #5c7064;
 
 // global styles
 html {
@@ -33,17 +33,17 @@ body {
   color: $primary-color;
   text-transform: lowercase;
   letter-spacing: 0.5px;
-  background-color: #69a4fe;
+  background-color:#5c7064;
 
   h5 {
-    color: #244751;
+    color: #5f7367;
     font-size: 1.2em;
     margin-left: 7%;
     display: inline-block;
   }
 
   .fas:hover {
-    color: #69a4fe;
+    color: #5c7064;
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
@@ -51,7 +51,7 @@ body {
   }
 
   .far:hover {
-    color: #69a4fe;
+    color: #5c7064;
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
@@ -60,8 +60,8 @@ body {
 
   #title {
     display: inline-block;
-    color: #69a4fe;
-    font-size: 2em;
+    color: #ffffff;
+    font-size: 2.4em;
     font-family: $title-font;
     margin-top: 3%;
     z-index: none;
@@ -84,7 +84,7 @@ body {
 
   .edit {
     padding: none;
-    color: #244751;
+    color: #5c7064;
     font-size: 1.2em;
   }
 
@@ -127,7 +127,7 @@ body {
   }
 
   a:hover {
-    color: #69a4fe !important;
+    color: #5c7064 !important;
   }
 
   //for the whole modal component
@@ -171,7 +171,7 @@ body {
 
   .edit-button {
     border-radius: 10px;
-    background-color: #69a4fe;
+    background-color: #5c7064;
     border: none;
     margin-top: 1%;
     padding: 2%;
@@ -179,7 +179,7 @@ body {
   }
 
   .edit-button:hover {
-    background-color: #1655b4;
+    background-color: #5c7064;
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -192,7 +192,7 @@ body {
     top: 0;
     bottom: 0;
     width: 5%;
-    background-color: #69a4fe;
+    background-color: #5c7064;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -211,47 +211,4 @@ body {
       margin-right: 50%;
     }
   }
-
-  // .loader-wrapper {
-  //   width: 100%;
-  //   height: 100%;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   background-color: #242f3f;
-  //   display:flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
-
-  // .loader {
-  //   display: inline-block;
-  //   width: 30px;
-  //   height: 30px;
-  //   position: relative;
-  //   border: 4px solid #Fff;
-  //   animation: loader 2s infinite ease;
-  // }
-
-  // .loader-inner {
-  //   vertical-align: top;
-  //   display: inline-block;
-  //   width: 100%;
-  //   background-color: #fff;
-  //   animation: loader-inner 2s infinite ease-in;
-  // }
-  // @keyframes loader {
-  //   0% { transform: rotate(0deg);}
-  //   25% { transform: rotate(180deg);}
-  //   50% { transform: rotate(180deg);}
-  //   75% { transform: rotate(360deg);}
-  //   100% { transform: rotate(360deg);}
-  // }
-  // @keyframes loader-inner {
-  //   0% { height: 0%;}
-  //   25% { height: 0%;}
-  //   50% { height: 100%;}
-  //   75% { height: 100%;}
-  //   100% { height: 0%;}
-  // }
 }
