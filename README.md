@@ -8,9 +8,9 @@ A single page app that autocategorizes your tasks into either a things to watch,
 ## Screenshots
 
 ### PLACEHOLDER
-!["Placeholder"](https://github.com/cyncui/smart-to-do)
-### PLACEHOLDER
-!["Placeholder"](https://github.com/cyncui/smart-to-do)
+## Demo Video
+https://user-images.githubusercontent.com/51090676/124223210-24baed80-dab8-11eb-86c8-60f56c74d4af.mov
+
 
 ## Contributors
 
