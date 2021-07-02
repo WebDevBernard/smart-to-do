@@ -4,11 +4,20 @@
 $font-stack: 'Inter', sans-serif;
 $primary-color: #1655b4;
 
+#dark-mode-cards {
+  background-color: #244751;
+  color: #fefefe;
+}
+
+#dark-mode-title {
+  color: #fefefe;
+}
+
 .cards {
   width: 75%;
   height: 100%;
   display: flex;
-  margin-top: 10%;
+  margin-top: 8%;
   margin-left: 8%;
   padding-bottom: 10%;
   flex-direction: row;

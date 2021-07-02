@@ -1,7 +1,9 @@
 // See: https://sass-lang.com/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 
-$font-stack: 'Inter', sans-serif;
+$font-stack: "Inter", sans-serif;
+$title-font: "Shrikhand", cursive;
 $primary-color: #1655b4;
 
 // global styles
@@ -9,8 +11,15 @@ html {
   box-sizing: border-box;
   // overflow: hidden;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
+}
+
+.dark-mode-sidebar {
+  background-color: #244751;
+  color: #fefefe;
 }
 
 body {
@@ -24,12 +33,52 @@ body {
   color: $primary-color;
   text-transform: lowercase;
   letter-spacing: 0.5px;
-  background-color: #69A4FE;
+  background-color: #69a4fe;
 
   h5 {
     color: #244751;
     font-size: 1.2em;
     margin-left: 7%;
+    display: inline-block;
+  }
+
+  .fas:hover {
+    color: #69a4fe;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+  }
+
+  .far:hover {
+    color: #69a4fe;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+  }
+
+  #title {
+    display: inline-block;
+    color: #69a4fe;
+    font-size: 2em;
+    font-family: $title-font;
+    margin-top: 3%;
+    z-index: none;
+    -webkit-text-stroke: 0.5px black;
+    line-height: 105%;
+  }
+
+  #title:hover {
+    -o-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .4s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%232a3754' stroke-width='1.2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+    background-position: 0 100%;
+    background-size: auto 6px;
+    background-repeat: repeat-x;
+    text-decoration: none;
+    border: none;
+    transition: none;
   }
 
   .edit {
@@ -51,37 +100,33 @@ body {
     padding-left: 24px;
     padding-bottom: 10px;
     display: flex;
-
-    
-
   }
 
   ul li:before {
-    content:'∗';
-    position:absolute;
-    display:block;
-    left:0;
-    top:-1px;
-    font-size:16px;
-    color:rgb(190,190,190);
+    content: "∗";
+    position: absolute;
+    display: block;
+    left: 0;
+    top: -1px;
+    font-size: 16px;
+    color: rgb(190, 190, 190);
   }
 
   #result {
     padding-left: 10%;
     margin-top: -2%;
     list-style-type: none;
-
   }
 
   a {
     color: inherit;
     text-decoration: none;
-    -webkit-transition: all .4s ease-out;
-    transition: all .4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
   }
 
   a:hover {
-    color: #69A4FE!important;
+    color: #69a4fe !important;
   }
 
   //for the whole modal component
@@ -94,38 +139,38 @@ body {
     width: 100%;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
 
   /* Modal Content/Box */
   .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 50%; /* Could be more or less, depending on screen size */
-      text-align: center;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    text-align: center;
   }
 
   /* The Close Button */
   .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
   }
 
   .close:hover,
   .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .edit-button {
     border-radius: 10px;
-    background-color: #69A4FE;
+    background-color: #69a4fe;
     border: none;
     margin-top: 1%;
     padding: 2%;
@@ -134,19 +179,19 @@ body {
 
   .edit-button:hover {
     background-color: #1655b4;
-    -webkit-transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear; 
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
   }
 
   aside {
     position: fixed;
     float: right;
-    right:0;
+    right: 0;
     top: 0;
     bottom: 0;
     width: 5%;
-    background-color:#69A4FE;
+    background-color: #69a4fe;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -156,7 +201,7 @@ body {
       height: 50px;
       width: 50px;
     }
-    
+
     button {
       background-color: inherit;
       border: none;
@@ -165,4 +210,47 @@ body {
       margin-right: 50%;
     }
   }
+
+  // .loader-wrapper {
+  //   width: 100%;
+  //   height: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   background-color: #242f3f;
+  //   display:flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+  // .loader {
+  //   display: inline-block;
+  //   width: 30px;
+  //   height: 30px;
+  //   position: relative;
+  //   border: 4px solid #Fff;
+  //   animation: loader 2s infinite ease;
+  // }
+
+  // .loader-inner {
+  //   vertical-align: top;
+  //   display: inline-block;
+  //   width: 100%;
+  //   background-color: #fff;
+  //   animation: loader-inner 2s infinite ease-in;
+  // }
+  // @keyframes loader {
+  //   0% { transform: rotate(0deg);}
+  //   25% { transform: rotate(180deg);}
+  //   50% { transform: rotate(180deg);}
+  //   75% { transform: rotate(360deg);}
+  //   100% { transform: rotate(360deg);}
+  // }
+  // @keyframes loader-inner {
+  //   0% { height: 0%;}
+  //   25% { height: 0%;}
+  //   50% { height: 100%;}
+  //   75% { height: 100%;}
+  //   100% { height: 0%;}
+  // }
 }
