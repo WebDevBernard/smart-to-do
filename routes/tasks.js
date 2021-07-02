@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { movieCat, getBooks, foodCat, getWolf } = require("./api");
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM tasks`)
@@ -12,6 +13,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err });
       });
   });
+
   router.get("/:id", (req, res) => {
     const userId = parseInt(req.params.id);
     db.query(`SELECT * FROM tasks WHERE user_id = $1;`, [userId])
@@ -23,6 +25,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
       });
   });
+
   router.post("/", (req, res) => {
     const name = req.body.name;
     if (name.match(/\bwatch\b/)) {
@@ -59,7 +62,9 @@ module.exports = (db) => {
       name.match(/\bwash\b/) ||
       name.match(/\bemail\b/) ||
       name.match(/\bcall\b/) ||
-      name.match(/\bremember\b/)
+      name.match(/\bremember\b/) ||
+      name.match(/\bpay\b/) ||
+      name.match(/\brun\b/)
     ) {
       db.query(
         `INSERT INTO tasks (user_id, name, category_name, date_created) VALUES ($1, $2, $3, $4);`,
@@ -120,30 +125,12 @@ module.exports = (db) => {
       });
     }
   });
-  // router.put("/:id", (req, res) => {
-  //   const userTask = req.body;
-  //   const userId = req.params.id;
-  //   db.query(
-  //     `UPDATE tasks
-  // SET name = 'Joe',
-  // user_id = 1,
-  // category_name = 'to-watch',
-  // date_created = 'NOW()'
-  // WHERE id = 1 AND user_id = 1
-  // RETURNING *;`
-  //   )
-  //     .then((data) => {
-  //       const response = data.rows;
-  //       console.log({ response });
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).json({ error: err.message });
-  //     });
-  // });
+
   router.delete(`/:id`, (req, res) => {
     const taskId = parseInt(req.params.id);
     db.query(`DELETE FROM tasks WHERE id = $1;`, [taskId]);
     res.json("Your Task Has Been Deleted");
   });
+
   return router;
 };

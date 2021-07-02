@@ -6,7 +6,8 @@ $(() => {
     <li>${task.name}
     </li>`);
 
-    const $deleteButton = $(`<button class="deletetask" type="submit" taskid="${task.id}"><i class="far fa-trash-alt"></i>
+    const $deleteButton =
+      $(`<button class="deletetask" type="submit" taskid="${task.id}"><i class="far fa-trash-alt"></i>
     </button>`);
 
     $newTask.append($deleteButton);
@@ -14,15 +15,15 @@ $(() => {
     return $newTask;
   };
 
-  // // renders the tasks in reverse-chronological order
-  const renderTasks = function(tasks) {
-    // const $taskList = $("<div class='cards'></div>");
+  // renders the tasks in reverse-chronological order
+  const renderTasks = function (tasks) {
+
     const $towatch = $("#towatch");
     const $toread = $("#toread");
     const $tobuy = $("#tobuy");
     const $toeat = $("#toeat");
     const $todo = $("#todo");
-    // $taskList.empty();
+
     $towatch.empty();
     $toread.empty();
     $tobuy.empty();
@@ -63,42 +64,45 @@ $(() => {
   const $newTextBox = $("#textbox");
 
   // event listener for submit
-  $(".taskbutton").on("click", function(event) {
+  $(".taskbutton").on("click", function (event) {
     event.preventDefault();
     console.log($newTextBox.val());
     const data = { name: $newTextBox.val() };
-    // add category_name to data object & have api use the data.category_name
-    // const data = $(this).val();
-    // posting the new task
-    $.ajax({
-      method: "POST",
-      url: "/tasks",
-      data: data,
-
-      success: function() {
-        loadTasks();
-        $("#textbox").val("");
-      },
-      error: function(err) {
-        console.log("error:", err);
-      },
-    });
-  });
-
-  // testing if enter key works
-  $('#textbox').keydown(function(event) {
-    // enter has keyCode = 13, change it if you want to use another button
-    if (event.keyCode === 13) {
+    
+    if ($("#textbox").val().length > 0) {
+      // posting the new task
       $.ajax({
         method: "POST",
         url: "/tasks",
         data: data,
-  
-        success: function() {
+
+        success: function () {
           loadTasks();
           $("#textbox").val("");
         },
-        error: function(err) {
+        error: function (err) {
+          console.log("error:", err);
+        },
+      });
+    } else {
+      alert("you forgot to enter an actual task!");
+    }
+  });
+
+  // testing if enter key works
+  $("#textbox").keydown(function (event) {
+    // enter has keyCode = 13, change it if you want to use another button
+    if (event.keyCode === 13 && ($("#textbox").val().length > 0)) {
+      $.ajax({
+        method: "POST",
+        url: "/tasks",
+        data: data,
+
+        success: function () {
+          loadTasks();
+          $("#textbox").val("");
+        },
+        error: function (err) {
           console.log("error:", err);
         },
       });
@@ -106,7 +110,7 @@ $(() => {
   });
 
   // event listener for delete
-  $(".cards").on("click", ".deletetask", function(event) {
+  $(".cards").on("click", ".deletetask", function (event) {
     event.preventDefault();
     const data = loadTasks();
 
@@ -115,10 +119,10 @@ $(() => {
       url: `tasks/${$(this).attr("taskid")}`,
       data: data,
 
-      success: function() {
+      success: function () {
         loadTasks();
       },
-      error: function(err) {
+      error: function (err) {
         console.log("error:", err);
       },
     });
