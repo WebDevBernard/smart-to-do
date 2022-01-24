@@ -5,9 +5,6 @@
 
 A single page app that autocategorizes your tasks into either a things to watch, places to eat at, books to read, things to buy, miscellaneous todo's.  Enter a verb to (watch, read, eat, buy, do) manually categorize your tasks.
 
-## Screenshots
-
-### PLACEHOLDER
 ## Demo Video
 https://user-images.githubusercontent.com/51090676/124223210-24baed80-dab8-11eb-86c8-60f56c74d4af.mov
 
@@ -16,7 +13,7 @@ https://user-images.githubusercontent.com/51090676/124223210-24baed80-dab8-11eb-
 
 - [Cynthia Cui](https://github.com/cyncui)
 - [Yucen J Liu](https://github.com/YucenLyc)
-- [Bernard Yang](https://github.com/bernard9)
+- [Bernard Yang](https://github.com/webdevbernard)
 
 - This is the group project we made for our Lighthouse Labs Midterm. 
 
