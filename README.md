@@ -1,5 +1,4 @@
 # get sh*t done! - Smart TODO List
-=========
 
 ## Introduction
 
